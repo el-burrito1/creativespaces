@@ -1,0 +1,79 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container.listingContainer{
+	/*margin-left: 75px;*/
+}
+
+.background{
+	background: url('/images/beachPier.jpg')  50% 0 no-repeat fixed; 
+	height: 460px;
+	background-size: 100%;
+	width: 100%;
+	position: relative;
+	padding: 100px 0;
+}
+
+.content{
+	height: 769px;
+	position: relative;
+	padding: 50px 0;
+}
+
+.cityName{
+	font-family: 'News Cycle', sans-serif;
+	font-weight: bold;
+}
+
+.cityName>h4{
+	padding-top: 13px;
+}
+
+.leftAdjust{
+	padding-left: 0px !important;
+}
+
+.thumbs{
+	border:2px solid white;
+}
+
+.navbar{
+	margin-bottom: 0px;
+}
+
+.resultsList{
+	margin-top: 50px;
+	height:145px;
+	border-bottom: 1px solid #E7E7E7;
+}
+
+.thumb{
+	border-top: 4px solid white;
+	border-bottom: 4px solid white;
+}
+
+.thumbsRight{
+	border-right:4px solid white;
+}
+
+.bottomNav{
+	height:150px;
+}
+
+.bottomLinks{
+	color: #938A83;
+	margin-top: 20px;
+}
+
+/*4E9BCA looks good as blue*/
+
+/*E88C0C looks good as brown*/
+
+
+
+

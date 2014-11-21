@@ -1,0 +1,81 @@
+extends layout
+
+block content
+    nav(class='navbar navbar-default navbar-fixed-top')
+        a(class='navbar-brand') Creative Spaces LA
+    div(class='container')
+        div(class='row')
+            div(class='col-md-12' style='height:100px;')
+    div(class='container listingContainer' style='border-right:1px solid #E7E7E7;')
+        div(class='row' style='border-top:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;')
+            div(class='col-md-5 leftAdjust' style='')
+                img(src='/images/officeExterior.jpg' style='width:100%;height:327px;')
+                img(src='/images/officeExterior.jpg' style='width:118px;height:77px;' class='thumb thumbsRight')
+                img(src='/images/officeInterior.jpg' style='width:118px;height:77px;' class='thumb thumbsRight')
+                img(src='/images/waitingRoom.jpg' style='width:118px;height:77px;' class='thumb thumbsRight')
+                img(src='/images/officeCourtyard.jpg' style='width:118px;height:77px;' class='thumb')
+            div(class='col-md-5' style='height:403px;max-height:100%;border-right:1px solid #E7E7E7;')
+                h2 301 N. Canon Drive
+                h5 Beverly Hills, CA
+                p Village on Canon is located in the heart of Beverly Hills on N. Canon just one block east of Beverly Drive. The Village on Canon features distinct Mediterranean architecture and offers a central connecting courtyard in the middle of the building with a cascading fountain, bronze sculptures, and hand-painted decorative tiles.
+            div(class='col-md-2')
+                form(role='form')
+                    div(class='form-group')
+                        input(type='name' class='form-control' placeholder='name' style='margin-top:30px; margin-bottom:10px;')
+                        input(type='email' class='form-control' placeholder='email' style='margin-bottom:15px;')
+                        button(type='' class='btn btn-default' style='color:white;background-color:#9BCA4F;width:165px;') Tour Office
+    div(class='container')
+        div(class='row' style='border-right:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;margin-bottom:100px;')
+            div(class='col-md-5 leftAdjust')
+                div(id='map-canvas' class='map-canvas' style='width:100%;height:327px;')
+            div(class='col-md-3' style='height:327px;')
+                h4 Available Space:
+                ul 
+                    li Suite 300 (1,400 SF)
+                    li Suite 301 (2,000 SF)
+                    li Suite 101 (11,000 SF)
+                br 
+                h4 Amenities:
+                ul
+                    li Kitchen 
+                        i(class='fa fa-check' style='float:right;margin-right:125px;color:#9BCA4F')
+                    li Reception
+                        i(class='fa fa-check' style='float:right;margin-right:125px;color:#9BCA4F')
+                    li Parking
+                        i(class='fa fa-check' style='float:right;margin-right:125px;color:#9BCA4F')
+    nav(class='navbar navbar-default bottomNav')
+        div(class='container')
+            div(class='row')
+                div(class='col-md-2')
+                    h4(class='bottomLinks') About
+                    a About us
+                    br 
+                    a What we do
+                    br  
+                    a Blog
+                    br 
+                    a Privacy Policy
+                div(class='col-md-2')
+                    h4(class='bottomLinks') Resources
+                    a Brokers
+                    br
+                    a Landlords
+                div(class='col-md-2')
+                    h4(class='bottomLinks') Contact
+                    a Help
+                    br
+                    a Contact Us
+                div(class='col-md-2')
+                    h4(class='bottomLinks') Connect
+                    a Twitter
+                    br 
+                    a Facebook
+                    br 
+                    a Google+
+                    br
+                    a Linkedin
+
+    
+
+
+
