@@ -8,13 +8,15 @@ block content
         div(class='container')
             div(class='row')
                 div(class='col-md-offset-4 col-sm-offset-4 col-md-2 col-xs-2')
-                    select(class='form-control' style='margin-left:-80px;width:200px;margin-top:25px;')
+                    select(class='form-control locationList')
                         option Location
                         option Venice
                         option Santa Monica
                         option Culver City
                         option Hollywood
                         option Downtown/Arts District
+                        option Echo Park
+                        option Pasadena
                 div(class='col-md-6 col-sm-2 col-xs-2 col-centered')
                     form(class='form-inline' role='form')
                         div(class='form-group')
@@ -36,7 +38,7 @@ block content
                         label(class='radio-inline')
                             input(type='radio')
                             span $/sf/month
-                    button(class='btn' style='color:white;background-color:#9BCA4F;width:200px;') search
+                    button(class='btn searchButton') search
     nav(class='navbar navbar-default bottomNav')
         div(class='container')
             div(class='row')

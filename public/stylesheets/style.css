@@ -4,10 +4,31 @@ body {
 
 a {
   color: #00B7FF;
+  cursor: pointer;
 }
 
-.container.listingContainer{
-	/*margin-left: 75px;*/
+.locationList{
+	margin-left: -80px;
+	width: 200px;
+	margin-top: 25px;
+}
+
+.searchButton{
+	color: white;
+	background-color: #9BCA4F;
+	width: 200px;
+}
+
+.searchColumn{
+	margin-top: 50px;
+	border-right: 1px solid #E7E7E7;
+	height: 400px;
+}
+
+.resultPhotos{
+	height: 120px;
+	box-shadow: 4px 4px 4px #888888;
+	max-width: 160px;
 }
 
 .background{
@@ -20,18 +41,9 @@ a {
 }
 
 .content{
-	height: 769px;
+	height: 600px;
 	position: relative;
 	padding: 50px 0;
-}
-
-.cityName{
-	font-family: 'News Cycle', sans-serif;
-	font-weight: bold;
-}
-
-.cityName>h4{
-	padding-top: 13px;
 }
 
 .leftAdjust{

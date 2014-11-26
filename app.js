@@ -40,6 +40,10 @@ app.get('/results' , function(req,res){
 	res.render('results')
 })
 
+app.get('/expirement' , function(req,res){
+	res.render('expirement')
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

@@ -4,8 +4,8 @@ block content
     nav(class='navbar navbar-default navbar-fixed-top')
         a(class='navbar-brand') Creative Spaces LA
     div(class='container')
-        div(class='row' style='margin-top:50px;height:800px;') 
-            div(class='col-md-3' style='margin-top: 50px; border-right: 1px solid #E7E7E7; height:400px;') 
+        div(class='row' style='margin-top:50px;height:710px;') 
+            div(class='col-md-3 searchColumn') 
                 select(class='form-control' style='margin-bottom:20px;width:200px;')
                     option Location
                     option Venice
@@ -13,6 +13,8 @@ block content
                     option Culver City
                     option Hollywood
                     option Downtown/Arts District
+                    option Echo Park
+                    option Pasadena 
                 form(class='form-inline' role='form')
                     div(class='form-group')
                         div(class='input-group')
@@ -33,9 +35,9 @@ block content
                     label(class='radio-inline')
                         input(type='radio')
                         span $/sf/month
-                button(class='btn' style='color:white;background-color:#9BCA4F;width:200px;') search
+                button(class='btn searchButton') search
             div(class='col-md-offset-1 col-md-2 resultsList')
-                img(src='/images/officeExterior.jpg' style='height:120px; box-shadow: 4px 4px 4px #888888;')
+                img(src='/images/officeExterior.jpg' class='resultPhotos')
             div(class='col-md-4 resultsList')    
                 h4 
                     a 301 N Canon Drive
@@ -46,7 +48,7 @@ block content
                 p(style='margin-top:10px; font-weight:bold;') $3,000/month
                     p 1,650 SF Available
             div(class='col-md-offset-1 col-md-2 resultsList')
-                img(src='/images/officeCourtyard.jpg' style='height:120px; box-shadow: 4px 4px 4px #888888;')
+                img(src='/images/officeCourtyard.jpg' class='resultPhotos')
             div(class='col-md-4 resultsList')    
                 h4 
                     a 600 Colorado Blvd.
@@ -57,7 +59,7 @@ block content
                 p(style='margin-top:10px; font-weight:bold;') $4,000/month
                     p 11,150 SF Available
             div(class='col-md-offset-1 col-md-2 resultsList')
-                img(src='http://images.42floors.com/cdc7c1b12478b746168d4ec0544875e6c73bb2e1.jpg?s=700x467%23' style='height:120px; width:160px; box-shadow: 4px 4px 4px #888888;')
+                img(src='http://images.42floors.com/cdc7c1b12478b746168d4ec0544875e6c73bb2e1.jpg?s=700x467%23' class='resultPhotos')
             div(class='col-md-4 resultsList')    
                 h4 
                     a 4052 Del Rey Ave.
