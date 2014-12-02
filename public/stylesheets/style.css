@@ -67,6 +67,8 @@ a {
 .thumb{
 	border-top: 4px solid white;
 	border-bottom: 4px solid white;
+	width: 118px;
+	height: 77px;
 }
 
 .thumbsRight{
