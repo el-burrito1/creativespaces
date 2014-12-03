@@ -1,4 +1,10 @@
 $(document).on('ready' , function(){
+	// $('.searchColumn').height(($('.resultList').length) x 77);
+	// console.log($('.resultsList').length)
+	$('.searchColumn').height(($('.resultsList').length)*55) 
+	$('#mainContain').height(690 + (($('.resultAdd').length)*200))
+	console.log($('.searchColumn').height())
+
 	$window = $(window);
 
 	$('[data-type]').each(function() {

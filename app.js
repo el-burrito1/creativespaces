@@ -44,7 +44,7 @@ if ('development' == app.get('env')) {
 app.get('/', function(req,res){
 	var space = new buildingModel({
 		address:'301 North Canon Drive',
-		imageSrc: ['/images/officeExterior.jpg','/images/officeInterior.jpg','/images/waitingRoom.jpg','/images/officeCourtyard.jpg'],
+		imageSrc: ['/images/officeExterior.jpg'],
 		city: 'Beverly Hills',
 		description: 'Artists compound blocks from Venice Beach',
 		ratePerMonth: 3500,
@@ -70,6 +70,13 @@ app.get('/results' , function(req,res){
 
 app.get('/admin' , function(req,res){
 	res.render('admin')
+})
+
+app.post('/create' , function(req,res){
+	console.log(req.body)
+	var edit = req.body.imageSrc.split(',')
+	console.log(edit)
+	res.redirect('/admin')
 })
 
 
