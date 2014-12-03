@@ -49,7 +49,7 @@ app.get('/', function(req,res){
 		description: 'Artists compound blocks from Venice Beach',
 		ratePerMonth: 3500,
 		spacesAvailable: ['Suite 300 (1,400 SF)','Suite 400 (1,200 SF)','Suite 500 (2,500 SF)'],
-		amenities: ['Kitchen' , 'Reception' , 'Parking']
+		amenities: ['Kitchen' , 'Reception' , 'Parking' ]
 	})
 	space.save();
 	res.render('index')
@@ -57,7 +57,7 @@ app.get('/', function(req,res){
 
 app.get('/results/northcanon' , function(req,res){
 	buildingModel.find({}, function(err,docs){
-		res.render('expirement' , {suites : docs[0]})
+		res.render('northcanon' , {suites : docs[0]})
 	})
 });
 
@@ -68,8 +68,8 @@ app.get('/results' , function(req,res){
 	})
 })
 
-app.get('/about' , function(req,res){
-	res.render('about')
+app.get('/admin' , function(req,res){
+	res.render('admin')
 })
 
 
