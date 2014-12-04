@@ -2,17 +2,22 @@ var mongoose = require('mongoose')
 
 var buildingSchema = new mongoose.Schema({
 	address          : String,
-	longitude        : String,
-	latitude         : String,
 	city             : String,
-	squareFoot       : Number,
+
+	latitude         : String,
+	longitude        : String,
+
 	ratePerSF        : Number,
 	ratePerMonth     : Number,
+
 	description      : String,
 	smallDescription : String,
+
+	SFofSpaces       : [String],
+	availableSuites  : [String],
+
+	amenities        : [String],
 	imageSrc         : [String],
-	spacesAvailable  : [String],
-	amenities        : [String]
 })
 
 var buildingModel = module.exports = mongoose.model('building' , buildingSchema)

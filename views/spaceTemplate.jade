@@ -9,10 +9,11 @@ block content
             div(class='col-md-5 leftAdjust')
                 div(id='building-photos' class='carousel slide' data-ride='carousel')
                     ol(class='carousel-indicators')
-                        li(data-target='#building-photos' data-slide-to='0' class='active')
-                        li(data-target='#building-photos' data-slide-to='1')
-                        li(data-target='#building-photos' data-slide-to='2')
-                        li(data-target='#building-photos' data-slide-to='3')
+                        for item, i in suites.imageSrc
+                            if i === 0
+                                li(data-target='#building-photos' data-slide-to='#{i}' class='active')
+                            else
+                                li(data-target='#building-photos' data-slide-to='#{i}')
                     div(class='carousel-inner' role='listbox')
                         for item, i in suites.imageSrc
                             if i === 0
@@ -48,7 +49,7 @@ block content
             div(class='col-md-3' style='height:327px;')
                 h4(style='margin-top:30px;') Available Space:
                 ul 
-                    for val in suites.spacesAvailable
+                    for val in suites.availableSuites
                         li= val
                 br 
                 h4 Amenities:
@@ -56,6 +57,10 @@ block content
                     for val in suites.amenities
                         li= val 
                             i(class='fa fa-check' style='float:right;margin-right:125px;color:#9BCA4F')
+                br
+                br
+                i(class='fa fa-building-o' style='margin-right:10px;')
+                a(href='/flyers/canon_301_-_sl.pdf' download='301_Canon.pdf' style='') Download Building Flyer
                    
     
 
