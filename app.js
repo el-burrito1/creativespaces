@@ -45,7 +45,7 @@ app.get('/', function(req,res){
 	var space = new buildingModel({
 		address:'301 North Canon Drive',
 		imageSrc: ['/images/officeExterior.jpg'],
-		city: 'Beverly Hills',
+		city: 'Santa Monica',
 		description: 'Artists compound blocks from Venice Beach',
 		ratePerMonth: 3500,
 		spacesAvailable: ['Suite 300 (1,400 SF)','Suite 400 (1,200 SF)','Suite 500 (2,500 SF)'],
@@ -56,13 +56,16 @@ app.get('/', function(req,res){
 });
 
 app.get('/results/northcanon' , function(req,res){
-	buildingModel.find({}, function(err,docs){
+	console.log(req.body)
+	buildingModel.find({address:'301 North Canon Drive'}, function(err,docs){
+		console.log(docs)
 		res.render('northcanon' , {suites : docs[0]})
 	})
 });
 
 app.get('/results' , function(req,res){
-	buildingModel.find({}, function(err,docs){
+	console.log(req.query)
+	buildingModel.find({city:req.query.city}, function(err,docs){
 		console.log(docs)
 		res.render('results' , {buildings:docs})
 	})
@@ -73,9 +76,7 @@ app.get('/admin' , function(req,res){
 })
 
 app.post('/create' , function(req,res){
-	console.log(req.body)
-	var edit = req.body.imageSrc.split(',')
-	console.log(edit)
+	console.log(req)
 	res.redirect('/admin')
 })
 

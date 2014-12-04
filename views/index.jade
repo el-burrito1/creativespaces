@@ -5,8 +5,9 @@ block content
     section(data-speed='2' data-type='background' class='content')
         div(class='container')
             div(class='row')
+            form(action='/results' method='get')
                 div(class='col-md-offset-4 col-sm-offset-4 col-md-2 col-xs-2')
-                    select(class='form-control locationList')
+                    select(name='city' class='form-control locationList')
                         option Location
                         option Venice
                         option Santa Monica
@@ -19,10 +20,10 @@ block content
                     form(class='form-inline' role='form')
                         div(class='form-group')
                             div(class='input-group')
-                                p(style='font-weight:bold') Building Size (SF)
+                                p(style='font-weight:bold') Space Available (SF)
                                 input(style='width:85px')
                                 label(style='margin:5px;') to
-                                input(style='width:85px')
+                                input(name='SF' style='width:85px')
                                 br 
                                 br
                                 p(style='font-weight:bold') Price Range
@@ -34,9 +35,9 @@ block content
                             input(type='radio') 
                             span $/month
                         label(class='radio-inline')
-                            input(type='radio')
+                            input(name='price' type='radio')
                             span $/sf/month
-                    button(class='btn searchButton') search
+                    button(type='submit' class='btn searchButton') search
 
 
 
