@@ -43,17 +43,47 @@ if ('development' == app.get('env')) {
 
 app.get('/', function(req,res){
 	var space = new buildingModel({
-		address:'301 North Canon Drive',
-		imageSrc: ['/images/officeExterior.jpg' , '/images/officeInterior.jpg' , '/images/officeCourtyard.jpg' , '/images/waitingRoom.jpg'],
-		city: 'Santa Monica',
-		description: 'Artists compound blocks from Venice Beach',
-		ratePerMonth: 3500,
-		availableSuites: ['Suite 300 (1,400 SF)','Suite 400 (1,200 SF)','Suite 500 (2,500 SF)'],
-		amenities: ['Kitchen' , 'Reception' , 'Parking' ]
+		
+		address          :   '301 North Canon Drive',
+		city             :   'Santa Monica',
+
+		description      :    'Village on Canon is located in the heart of Beverly Hills on N. Canon just one block east of Beverly Drive. The Village on Canon features distinct Mediterranean architecture and offers a central connecting courtyard in the middle of the building with a cascading fountain, bronze sculptures, and hand-painted decorative tiles.',
+		smallDescription :    'Mediterranean style creative space available for sublease.',
+
+		ratePerSF        :     2.19,
+		ratePerMonth     :     3500,
+
+		SFofSpaces       :    [1400 , 1200 , 2500] ,
+		availableSuites  :    ['Suite 300 (1,400 SF)','Suite 400 (1,200 SF)','Suite 500 (2,500 SF)'],
+
+		amenities        :    ['Kitchen' , 'Reception' , 'Parking' ],
+		imageSrc         :    ['/images/officeExterior.jpg' , '/images/officeInterior.jpg' , '/images/officeCourtyard.jpg' , '/images/waitingRoom.jpg'],
 	})
+
 	space.save();
+
+	console.log(res);
+
 	res.render('index')
 });
+
+app.get('/results' , function(req,res){
+	console.log(req.query)
+	var minPrice = req.query.minPrice || 0;
+	var maxPrice = req.query.maxPrice || 999999999;
+
+	var minSF = req.query.minSF || 0;
+	var maxSF = req.query.maxSF || 999999999;
+
+	buildingModel.find({
+		city          :  req.query.city,
+		ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
+		SFofSpaces    : {$gte : minSF    , $lte : maxSF}
+	}, function(err,docs){
+		console.log(docs)
+		res.render('results' , {buildings:docs})
+	})
+})
 
 app.get('/results/:id' , function(req,res){
 	console.log(req.params.id)
@@ -62,14 +92,6 @@ app.get('/results/:id' , function(req,res){
 		res.render('spaceTemplate' , {suites : docs[0]})
 	})
 });
-
-app.get('/results' , function(req,res){
-	console.log(req.query)
-	buildingModel.find({city:req.query.city}, function(err,docs){
-		console.log(docs)
-		res.render('results' , {buildings:docs})
-	})
-})
 
 app.get('/admin' , function(req,res){
 	res.render('admin')

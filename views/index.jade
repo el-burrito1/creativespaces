@@ -21,21 +21,21 @@ block content
                         div(class='form-group')
                             div(class='input-group')
                                 p(style='font-weight:bold') Space Available (SF)
-                                input(style='width:85px')
+                                input(name='minSF' style='width:85px')
                                 label(style='margin:5px;') to
-                                input(name='SF' style='width:85px')
+                                input(name='maxSF' style='width:85px')
                                 br 
                                 br
                                 p(style='font-weight:bold') Price Range
-                                input(style='width:85px')
+                                input(name='minPrice' style='width:85px')
                                 label(style='margin:5px;') to
-                                input(style='width:85px')
+                                input(name='maxPrice' style='width:85px')
                     div(class='radio')
                         label(class='radio-inline')
-                            input(type='radio') 
+                            input(name='price' value='ratePerMonth' type='radio' id='radio') 
                             span $/month
                         label(class='radio-inline')
-                            input(name='price' type='radio')
+                            input(name='price' value='ratePerSF' type='radio')
                             span $/sf/month
                     button(type='submit' class='btn searchButton') search
 

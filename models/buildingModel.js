@@ -13,7 +13,7 @@ var buildingSchema = new mongoose.Schema({
 	description      : String,
 	smallDescription : String,
 
-	SFofSpaces       : [String],
+	SFofSpaces       : [Number],
 	availableSuites  : [String],
 
 	amenities        : [String],
