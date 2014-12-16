@@ -1,43 +1,50 @@
 extends layout
 
 block content
-    section(data-speed='4' data-type='background' class='background')
-    section(data-speed='2' data-type='background' class='content')
-        div(class='container')
-            div(class='row')
-            form(action='/results' method='get')
-                div(class='col-md-offset-4 col-sm-offset-4 col-md-2 col-xs-2')
-                    select(name='city' class='form-control locationList')
-                        option Location
-                        option Venice
-                        option Santa Monica
-                        option Culver City
-                        option Hollywood
-                        option Downtown/Arts District
-                        option Echo Park
-                        option Pasadena
-                div(class='col-md-6 col-sm-2 col-xs-2 col-centered')
-                    form(class='form-inline' role='form')
-                        div(class='form-group')
-                            div(class='input-group')
-                                p(style='font-weight:bold') Space Available (SF)
-                                input(name='minSF' style='width:85px')
-                                label(style='margin:5px;') to
-                                input(name='maxSF' style='width:85px')
-                                br 
-                                br
-                                p(style='font-weight:bold') Price Range
-                                input(name='minPrice' style='width:85px')
-                                label(style='margin:5px;') to
-                                input(name='maxPrice' style='width:85px')
-                    div(class='radio')
-                        label(class='radio-inline')
-                            input(name='price' value='ratePerMonth' type='radio' id='radio') 
-                            span $/month
-                        label(class='radio-inline')
-                            input(name='price' value='ratePerSF' type='radio')
-                            span $/sf/month
-                    button(type='submit' class='btn searchButton') search
+    //- section(data-speed='4' data-type='background' class='background')
+    //- section(data-speed='2' data-type='background' class='content')
+    div(class='backgroundImage')
+        h1(style='color:white;padding-left:6%;padding-top:11%' class='titleDisplay') Creative Spaces LA
+    //- div(class='parallax')
+    //-     div(class='parallax_layer parallax_layer--back')
+    //-         div(class='title') hello
+    //-     div(class='parallax_layer parallax_layer--base') 
+    //-         div(class='title') there
+    div(class='container indexSearch')
+        div(class='row')
+        form(action='/results' method='get')
+            div(class='col-md-offset-3 col-md-2 col-sm-offset-1 col-sm-3 col-xs-offset-1 col-xs-10')
+                select(name='city' class='form-control locationList')
+                    option Location
+                    option Venice
+                    option Santa Monica
+                    option Culver City
+                    option Hollywood
+                    option Downtown/Arts District
+                    option Echo Park
+                    option Pasadena
+            div(class='col-md-4 col-sm-6 col-xs-offset-1 col-xs-12 col-centered')
+                form(class='form-inline' role='form')
+                    div(class='form-group')
+                        div(class='input-group')
+                            p(style='font-weight:bold') Space Available (SF)
+                            input(name='minSF' class='inputFields')
+                            label(style='margin:5px;') to
+                            input(name='maxSF' class='inputFields')
+                            br 
+                            br
+                            p(style='font-weight:bold') Price Range
+                            input(name='minPrice' class='inputFields')
+                            label(style='margin:5px;') to
+                            input(name='maxPrice' class='inputFields')
+                div(class='radio')
+                    label(class='radio-inline')
+                        input(name='price' value='ratePerMonth' type='radio' id='radio') 
+                        span $/month
+                    label(class='radio-inline')
+                        input(name='price' value='ratePerSF' type='radio')
+                        span $/sf/month
+                button(type='submit' class='btn searchButton') search
 
 
 

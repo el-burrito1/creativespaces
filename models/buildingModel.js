@@ -18,6 +18,8 @@ var buildingSchema = new mongoose.Schema({
 
 	amenities        : [String],
 	imageSrc         : [String],
+
+	buildingFlyer    :  String
 })
 
 var buildingModel = module.exports = mongoose.model('building' , buildingSchema)

@@ -3,37 +3,38 @@ extends layout
 block content
     div(class='container')
         div(class='row' id='mainContain' style='margin-top:50px;height:690px;') 
-            div(class='col-md-3 searchColumn') 
-                select(class='form-control' style='margin-bottom:20px;width:200px;')
-                    option Location
-                    option Venice
-                    option Santa Monica
-                    option Culver City
-                    option Hollywood
-                    option Downtown/Arts District
-                    option Echo Park
-                    option Pasadena 
-                form(class='form-inline' role='form')
-                    div(class='form-group')
-                        div(class='input-group')
-                            p(style='font-weight:bold') Space Available (SF)
-                            input(style='width:85px')
-                            label(style='margin:5px;') to
-                            input(style='width:85px')
-                            br 
-                            br
-                            p(style='font-weight:bold') Price Range
-                            input(style='width:85px')
-                            label(style='margin:5px;') to
-                            input(style='width:85px')
-                div(class='radio')
-                    label(class='radio-inline')
-                        input(type='radio') 
-                        span $/month
-                    label(class='radio-inline')
-                        input(type='radio')
-                        span $/sf/month
-                button(class='btn searchButton') search
+            form(action='/results' method='get')
+                div(class='col-md-3 searchColumn') 
+                    select(name='city' class='form-control' style='margin-bottom:20px;width:200px;')
+                        option Location
+                        option Venice
+                        option Santa Monica
+                        option Culver City
+                        option Hollywood
+                        option Downtown/Arts District
+                        option Echo Park
+                        option Pasadena 
+                    form(class='form-inline' role='form')
+                        div(class='form-group')
+                            div(class='input-group')
+                                p(style='font-weight:bold') Space Available (SF)
+                                input(name='minSF' style='width:85px')
+                                label(style='margin:5px;') to
+                                input(name='maxSF' style='width:85px')
+                                br 
+                                br
+                                p(style='font-weight:bold') Price Range
+                                input(name='minPrice' style='width:85px')
+                                label(style='margin:5px;') to
+                                input(name='maxPrice' style='width:85px')
+                    div(class='radio')
+                        label(class='radio-inline')
+                            input(name='price' type='radio') 
+                            span $/month
+                        label(class='radio-inline')
+                            input(name='price' type='radio')
+                            span $/sf/month
+                    button(type='submit' class='btn searchButton') search
             div(class='col-md-offset-1 col-md-2 resultsList')
                 img(src='/images/officeExterior.jpg' class='resultPhotos')
             div(class='col-md-4 resultsList')    
@@ -78,6 +79,7 @@ block content
                     h4(style='margin-top:90px;')
                 div(class='col-md-2 resultsList')
                     p(style='margin-top:10px; font-weight:bold') $#{item.ratePerMonth}/month
+
 
 
 

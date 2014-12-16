@@ -61,14 +61,10 @@ app.get('/', function(req,res){
 	})
 
 	space.save();
-
-	console.log(res);
-
 	res.render('index')
 });
 
 app.get('/results' , function(req,res){
-	console.log(req.query)
 	var minPrice = req.query.minPrice || 0;
 	var maxPrice = req.query.maxPrice || 999999999;
 
@@ -80,14 +76,13 @@ app.get('/results' , function(req,res){
 		ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
 		SFofSpaces    : {$gte : minSF    , $lte : maxSF}
 	}, function(err,docs){
-		console.log(docs)
 		res.render('results' , {buildings:docs})
 	})
 })
 
 app.get('/results/:id' , function(req,res){
-	console.log(req.params.id)
-	buildingModel.find({}, function(err,docs){
+	console.log('id = ' + req.params.id)
+	buildingModel.find({address: req.params.id}, function(err,docs){
 		console.log(docs)
 		res.render('spaceTemplate' , {suites : docs[0]})
 	})

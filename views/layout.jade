@@ -2,6 +2,7 @@ doctype html
 html
   head
     title= title
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet' , href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(href='http://fonts.googleapis.com/css?family=News+Cycle|Fjalla+One' rel='stylesheet' type='text/css') 
@@ -13,7 +14,7 @@ html
     nav(class='navbar navbar-default bottomNav')
         div(class='container')
             div(class='row')
-                div(class='col-md-2')
+                div(class='col-md-2 col-xs-4')
                     h4(class='bottomLinks') About
                     a About us
                     br 
@@ -22,19 +23,19 @@ html
                     a Blog
                     br 
                     a Privacy Policy
-                div(class='col-md-2')
+                div(class='col-md-2 col-xs-4')
                     h4(class='bottomLinks') Resources
                     a Landlords
                     br
                     a Brokers
                     br
                     a Local Business
-                div(class='col-md-2')
+                div(class='col-md-2 col-xs-4')
                     h4(class='bottomLinks') Contact
                     a Help
                     br
                     a Contact Us
-                div(class='col-md-2')
+                div(class='col-md-2 socialLinks')
                     h4(class='bottomLinks') Connect
                     a Twitter
                     br 
@@ -43,6 +44,16 @@ html
                     a Google+
                     br
                     a Linkedin
+        div(class='container socialIcons')
+            div(class='row')
+                div(class='col-xs-offset-7 col-xs-1')
+                    i(class='fa fa-twitter-square')
+                div(class='col-xs-1')
+                    i(class='fa fa-facebook-square')
+                div(class='col-xs-1')
+                    i(class='fa fa-google-plus-square')
+                div(class='col-xs-1')
+                    i(class='fa fa-linkedin-square')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD90W6MypWGP6s4luD2kQHhZ9IFQrfr04g')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')

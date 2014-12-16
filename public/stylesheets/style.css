@@ -1,5 +1,5 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;	
 }
 
 a {
@@ -7,16 +7,110 @@ a {
   cursor: pointer;
 }
 
-.locationList{
-	margin-left: -80px;
-	width: 200px;
-	margin-top: 25px;
+/*mobile*/
+
+@media screen and (max-width: 480px){
+	body{
+		/*color: green;*/
+	}
+
+	.backgroundImage{
+		background: url('/images/beachPier.jpg')  50% 0 no-repeat fixed;
+	  	background-size: 100%;
+	  	height: 51px;
+	  	padding-bottom: 28%;
+	}
+
+	.inputFields{
+		width:36%;
+	}
+
+	.searchButton{
+		color: white;
+		background-color: #9BCA4F;
+		width: 82%;
+	}
+
+	.socialLinks{
+		display: none;
+	}
+
+	.titleDisplay{
+		display: none;
+	}
 }
 
-.searchButton{
-	color: white;
-	background-color: #9BCA4F;
-	width: 200px;
+/*regular */
+
+@media screen and (min-width: 480px){ 
+	.inputFields{
+		width: 24%;
+	}
+
+	.searchButton{
+		color: white;
+		background-color: #9BCA4F;
+		width: 57%;
+	}
+
+	.backgroundImage{
+		background: url('/images/beachPier.jpg')  50% 0 no-repeat fixed;
+	  	background-size: 100%;
+	  	height: 51px;
+	  	padding-bottom: 27%;
+	}
+
+	.socialIcons{
+		display: none;
+	}
+}
+
+
+.parallax{
+	height: 50vh;
+	overflow-x:
+	margin-top: 8%; hidden;
+	overflow-y: auto;
+	perspective: 1px;
+}
+
+.parallax_layer{
+	  padding: 50vh 0;
+	  position: absolute;
+	  width: 100%;
+/*	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;*/
+}
+
+.parallax_layer--base {
+  transform: translateZ(0);
+}
+.parallax_layer--back {
+  transform: translateZ(-1px);
+}
+
+.title{
+	font-size: 200%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	/*transform: translate(-50%,-50%);*/
+}
+
+
+.indexSearch{
+	margin-top: 5%;
+	/*height: 0px;*/
+	padding-bottom: 10%;
+}
+
+
+
+.locationList{
+	margin-top: 15%;
+	margin-bottom: 15%;
 }
 
 .searchColumn{
@@ -33,12 +127,11 @@ a {
 
 .background{
 	background: url('/images/beachPier.jpg')  50% 0 no-repeat fixed; 
-	height: 460px;
 	background-size: 100%;
-	width: 100%;
 	position: relative;
 	padding: 100px 0;
 }
+
 
 .content{
 	height: 600px;
@@ -76,12 +169,13 @@ a {
 }
 
 .bottomNav{
-	height:150px;
+	/*height: 150px;*/
+	padding-bottom: 2%;
 }
 
 .bottomLinks{
 	color: #938A83;
-	margin-top: 20px;
+	margin-top: 14%;
 }
 
 /*4E9BCA looks good as blue*/
