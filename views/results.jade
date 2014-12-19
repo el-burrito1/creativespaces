@@ -2,8 +2,48 @@ extends layout
 
 block content
     div(class='container')
-        div(class='row' id='mainContain' style='margin-top:50px;height:690px;') 
-            form(action='/results' method='get')
+        div(class='row' id='mainContain' style='margin-top:50px;')
+            div(class="panel-group mobileOnly" id="accordion" role="tablist" aria-multiselectable="true") 
+                div(class="panel panel-default")
+                    div(class="panel-heading" role="tab" id="headingOne")
+                        a(class='collapsed' data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded='false' aria-controls="collapseOne" style='margin-left:65%;color:#9ECC55')  new search
+                            i(class='fa fa-bars' style='margin-left: 3%')
+                    div(id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
+                        div(class="panel-body") 
+                            form(action='/results' method='get')
+                                div(class='col-md-offset-3 col-md-2 col-sm-offset-1 col-sm-3 col-xs-offset-1 col-xs-10' style='margin-top:-10%')
+                                    select(name='city' class='form-control locationList')
+                                        option Location
+                                        option Venice
+                                        option Santa Monica
+                                        option Culver City
+                                        option Hollywood
+                                        option Downtown/Arts District
+                                        option Echo Park
+                                        option Pasadena
+                                div(class='col-md-4 col-sm-6 col-xs-offset-1 col-xs-12 col-centered')
+                                    form(class='form-inline' role='form')
+                                        div(class='form-group')
+                                            div(class='input-group')
+                                                p(style='font-weight:bold') Space Available (SF)
+                                                input(name='minSF' class='inputFields')
+                                                label(style='margin:5px;') to
+                                                input(name='maxSF' class='inputFields')
+                                                br 
+                                                br
+                                                p(style='font-weight:bold') Price Range
+                                                input(name='minPrice' class='inputFields')
+                                                label(style='margin:5px;') to
+                                                input(name='maxPrice' class='inputFields')
+                                    div(class='radio')
+                                        label(class='radio-inline')
+                                            input(name='price' value='ratePerMonth' type='radio' id='radio') 
+                                            span $/month
+                                        label(class='radio-inline')
+                                            input(name='price' value='ratePerSF' type='radio')
+                                            span $/sf/month
+                                    button(type='submit' class='btn searchButton') search
+            form(class='mobileHide tabletHide' action='/results' method='get')
                 div(class='col-md-3 searchColumn') 
                     select(name='city' class='form-control' style='margin-bottom:20px;width:200px;')
                         option Location
@@ -35,50 +75,65 @@ block content
                             input(name='price' type='radio')
                             span $/sf/month
                     button(type='submit' class='btn searchButton') search
-            div(class='col-md-offset-1 col-md-2 resultsList')
-                img(src='/images/officeExterior.jpg' class='resultPhotos')
-            div(class='col-md-4 resultsList')    
-                h4 
-                    a 301 N Canon Drive
-                h6 Beverly Hills
-                p Mediteranean creative space located in the heart of Bevery Hills. 
-                h4(style='margin-top:90px;')
-            div(class='col-md-2 resultsList')
-                p(style='margin-top:10px; font-weight:bold;') $3,000/month
-                    p 1,650 SF Available
-            div(class='col-md-offset-1 col-md-2 resultsList')
-                img(src='/images/officeCourtyard.jpg' class='resultPhotos')
-            div(class='col-md-4 resultsList')    
-                h4 
-                    a 600 Colorado Blvd.
-                h6 Santa Monica
-                p Cool creative space for artists and tech companies.
-                h4(style='margin-top:90px;')
-            div(class='col-md-2 resultsList')
-                p(style='margin-top:10px; font-weight:bold;') $4,000/month
-                    p 11,150 SF Available
-            div(class='col-md-offset-1 col-md-2 resultsList')
-                img(src='http://images.42floors.com/cdc7c1b12478b746168d4ec0544875e6c73bb2e1.jpg?s=700x467%23' class='resultPhotos')
-            div(class='col-md-4 resultsList')    
-                h4 
-                    a 4052 Del Rey Ave.
-                h6 Marina del Rey
-                p Newly remodeled creative compound in the Marina
-                h4(style='margin-top:90px;')
-            div(class='col-md-2 resultsList')
-                p(style='margin-top:10px; font-weight:bold;') $2,100/month
-                    p 6,640 SF Available
+            //- div(class='col-md-offset-1 col-md-2 resultsList')
+            //-     img(src='/images/officeExterior.jpg' class='resultPhotos')
+            //- div(class='col-md-4 resultsList')    
+            //-     h4 
+            //-         a 301 N Canon Drive
+            //-     h6 Beverly Hills
+            //-     p Mediteranean creative space located in the heart of Bevery Hills. 
+            //-     h4(style='margin-top:90px;')
+            //- div(class='col-md-2 resultsList')
+            //-     p(style='margin-top:10px; font-weight:bold;') $3,000/month
+            //-         p 1,650 SF Available
+            //- div(class='col-md-offset-1 col-md-2 resultsList')
+            //-     img(src='/images/officeCourtyard.jpg' class='resultPhotos')
+            //- div(class='col-md-4 resultsList')    
+            //-     h4 
+            //-         a 600 Colorado Blvd.
+            //-     h6 Santa Monica
+            //-     p Cool creative space for artists and tech companies.
+            //-     h4(style='margin-top:90px;')
+            //- div(class='col-md-2 resultsList')
+            //-     p(style='margin-top:10px; font-weight:bold;') $4,000/month
+            //-         p 11,150 SF Available
+            //- div(class='col-md-offset-1 col-md-2 resultsList')
+            //-     img(src='http://images.42floors.com/cdc7c1b12478b746168d4ec0544875e6c73bb2e1.jpg?s=700x467%23' class='resultPhotos')
+            //- div(class='col-md-4 resultsList')    
+            //-     h4 
+            //-         a 4052 Del Rey Ave.
+            //-     h6 Marina del Rey
+            //-     p Newly remodeled creative compound in the Marina
+            //-     h4(style='margin-top:90px;')
+            //- div(class='col-md-2 resultsList')
+            //-     p(style='margin-top:10px; font-weight:bold;') $2,100/month
+            //-         p 6,640 SF Available
             for item in buildings
-                div(class='col-md-offset-1 col-md-2 resultsList resultAdd')
+                div(class='mobileHide col-md-offset-1 col-md-2 resultsList resultAdd')
                     img(src='#{item.imageSrc[0]}' class='resultPhotos')
-                div(class='col-md-4 resultsList')
+                div(class='mobileHide col-md-4 resultsList')
                     h4
                         a(href='/results/#{item.address}') #{item.address}
                     h6= item.city 
                     p= item.smallDescription
                     h4(style='margin-top:90px;')
-                div(class='col-md-2 resultsList')
+                div(class='mobileHide col-md-2 resultsList')
                     p(style='margin-top:10px; font-weight:bold') $#{item.ratePerMonth}/month
+            for item in buildings
+                div(class='mobileOnly')
+                    img(src='#{item.imageSrc[0]}' class='mobilePhotos')
+                div(class='mobileOnly')
+                    h4
+                        a(href='/results/#{item.address}') #{item.address}
+                    h6= item.city
+                    p= item.smallDescription
+                    h4()
+                div(class='mobileOnly')
+                    p $#{item.ratePerMonth}/month
+            for item in counts
+                ul 
+                    li
+                        a(href='/results/#{item}') #{item}
 
 
 

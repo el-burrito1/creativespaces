@@ -44,7 +44,7 @@ if ('development' == app.get('env')) {
 app.get('/', function(req,res){
 	var space = new buildingModel({
 		
-		address          :   '301 North Canon Drive',
+		address          :   '301 North Canon Drive 8',
 		city             :   'Santa Monica',
 
 		description      :    'Village on Canon is located in the heart of Beverly Hills on N. Canon just one block east of Beverly Drive. The Village on Canon features distinct Mediterranean architecture and offers a central connecting courtyard in the middle of the building with a cascading fountain, bronze sculptures, and hand-painted decorative tiles.',
@@ -64,7 +64,9 @@ app.get('/', function(req,res){
 	res.render('index')
 });
 
-app.get('/results' , function(req,res){
+app.get('/results/:page' , function(req,res){
+	console.log(req.params.page)
+	console.log(req.query)
 	var minPrice = req.query.minPrice || 0;
 	var maxPrice = req.query.maxPrice || 999999999;
 
@@ -75,9 +77,18 @@ app.get('/results' , function(req,res){
 		city          :  req.query.city,
 		ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
 		SFofSpaces    : {$gte : minSF    , $lte : maxSF}
-	}, function(err,docs){
-		res.render('results' , {buildings:docs})
 	})
+	.skip(req.params.page * 6 )
+	.limit(6)
+	.exec(function(err,docs){
+		console.log(docs.length)
+		var count = [];
+		for(var i = 0 ; i < docs.length ; i++){
+			count.push(i)
+		}
+		res.render('results' , {buildings:docs , counts:count , city:req.query.city})
+	})
+
 })
 
 app.get('/results/:id' , function(req,res){
