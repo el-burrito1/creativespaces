@@ -113,7 +113,7 @@ block content
                     img(src='#{item.imageSrc[0]}' class='resultPhotos')
                 div(class='mobileHide col-md-4 resultsList')
                     h4
-                        a(href='/results/#{item.address}') #{item.address}
+                        a(href='/location/#{item.address}') #{item.address}
                     h6= item.city 
                     p= item.smallDescription
                     h4(style='margin-top:90px;')
@@ -124,13 +124,13 @@ block content
                     img(src='#{item.imageSrc[0]}' class='mobilePhotos')
                 div(class='mobileOnly')
                     h4
-                        a(href='/results/#{item.address}') #{item.address}
+                        a(href='/location/#{item.address}') #{item.address}
                     h6= item.city
                     p= item.smallDescription
                     h4()
                 div(class='mobileOnly')
                     p $#{item.ratePerMonth}/month
-            div(class='col-md-offset-7') 
+            div(class=(totalCount > 6 ? 'col-md-offset-7' : 'col-md-offset-7 hidePaginate')) 
                 ul(class='pagination centerMobilePaginate')
                     li
                         a(href='/results/#{previous}?city=#{city}&minSF=#{minSF}&maxSF=#{maxSF}&minPrice=#{minPrice}&maxPrice=#{maxPrice}')

@@ -44,7 +44,7 @@ if ('development' == app.get('env')) {
 app.get('/', function(req,res){
 	var space = new buildingModel({
 		
-		address          :   '301 North Canon Drive 12',
+		address          :   '301 North Canon Drive 7',
 		city             :   'Santa Monica',
 
 		description      :    'Village on Canon is located in the heart of Beverly Hills on N. Canon just one block east of Beverly Drive. The Village on Canon features distinct Mediterranean architecture and offers a central connecting courtyard in the middle of the building with a cascading fountain, bronze sculptures, and hand-painted decorative tiles.',
@@ -65,8 +65,6 @@ app.get('/', function(req,res){
 });
 
 app.get('/results/:page' , function(req,res){
-	console.log(req.params.page)
-	console.log(req.query)
 	var city = req.query.city;
 	var minPrice = req.query.minPrice || 0;
 	var maxPrice = req.query.maxPrice || 999999999;
@@ -80,14 +78,11 @@ app.get('/results/:page' , function(req,res){
 		SFofSpaces    : {$gte : minSF    , $lte : maxSF}
 	})
 	.count(function(err,doc){
-		console.log(doc)
-		var paginate = Math.round(doc/6);
-		console.log(paginate)
+		var paginate = Math.ceil(doc/6);
 		var pages = [];
 		for(var i = 1 ; i < paginate + 1; i++){
 			pages.push(i)
 		}
-		console.log(pages)
 		buildingModel.find({
 			city          :  req.query.city,
 			ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
@@ -96,18 +91,15 @@ app.get('/results/:page' , function(req,res){
 		.skip(req.params.page * 6)
 		.limit(6)
 		.exec(function(err,docs){
-			console.log(docs.length)
 			var previous = Math.max(0,req.params.page - 1);
 			var next = Math.min(pages.length-1,parseInt(req.params.page)+1);
 			var count = [];
 			for(var i = 1 ; i < docs.length ; i++){
 				count.push(i)
 			}
-			console.log(req.params.page)
-			console.log(pages)
 			var currentPage = parseInt(req.params.page) + 1;
-			console.log(currentPage)
 			res.render('results' , {
+				totalCount:doc,
 				currentPage: currentPage,
 				previous: previous,
 				next: next,
@@ -121,32 +113,9 @@ app.get('/results/:page' , function(req,res){
 			})
 		})
 	})
-	// .skip(req.params.page * 6 )
-	// .limit(6)
-	// .exec(function(err,docs){
-	// 	console.log(docs.length)
-	// 	var previous = Math.max(0,req.params.page - 1);
-	// 	var next = Math.min(docs.length,parseInt(req.params.page)+1);
-	// 	var count = [];
-	// 	for(var i = 1 ; i < docs.length ; i++){
-	// 		count.push(i)
-	// 	}
-	// 	res.render('results' , {
-	// 		previous: previous,
-	// 		next: next,
-	// 		buildings:docs, 
-	// 		paginate:count, 
-	// 		city:req.query.city,
-	// 		minSF:req.query.minSF,
-	// 		maxSF:req.query.maxSF,
-	// 		minPrice:req.query.minPrice,
-	// 		maxPrice:req.query.maxPrice
-	// 	})
-	// })
-
 })
 
-app.get('/results/:id' , function(req,res){
+app.get('/location/:id' , function(req,res){
 	console.log('id = ' + req.params.id)
 	buildingModel.find({address: req.params.id}, function(err,docs){
 		console.log(docs)

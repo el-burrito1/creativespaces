@@ -219,6 +219,10 @@ a {
 	margin-top: 14%;
 }
 
+.hidePaginate{
+	display: none;
+}
+
 /*4E9BCA looks good as blue*/
 
 /*E88C0C looks good as brown*/
