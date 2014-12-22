@@ -27,5 +27,4 @@ $(document).on('ready' , function(){
 		$('.carousel').carousel($(this).data('carousel-number'))
 	})
 
-
 })

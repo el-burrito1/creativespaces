@@ -130,10 +130,21 @@ block content
                     h4()
                 div(class='mobileOnly')
                     p $#{item.ratePerMonth}/month
-            for item in counts
-                ul 
+            div(class='col-md-offset-7') 
+                ul(class='pagination centerMobilePaginate')
                     li
-                        a(href='/results/#{item}') #{item}
+                        a(href='/results/#{previous}?city=#{city}&minSF=#{minSF}&maxSF=#{maxSF}&minPrice=#{minPrice}&maxPrice=#{maxPrice}')
+                            span(aria-hidden='true') &laquo;
+                                span(class='sr-only') Previous
+                    for current in paginate 
+                        li(class=(current === currentPage ? 'active' : '' ))
+                            a(href='/results/#{current - 1}?city=#{city}&minSF=#{minSF}&maxSF=#{maxSF}&minPrice=#{minPrice}&maxPrice=#{maxPrice}') #{current} 
+                    li
+                        a(href='/results/#{next}?city=#{city}&minSF=#{minSF}&maxSF=#{maxSF}&minPrice=#{minPrice}&maxPrice=#{maxPrice}')
+                            span(aria-hidden='true') &raquo;
+                                span(class='sr-only') Next                        
+
+
 
 
 
