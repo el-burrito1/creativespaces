@@ -119,6 +119,7 @@ block content
                     h4(style='margin-top:90px;')
                 div(class='mobileHide col-md-2 resultsList')
                     p(style='margin-top:10px; font-weight:bold') $#{item.ratePerMonth}/month
+                        p 11,500 SF Available
             for item in buildings
                 div(class='mobileOnly')
                     img(src='#{item.imageSrc[0]}' class='mobilePhotos')
@@ -130,8 +131,8 @@ block content
                     h4()
                 div(class='mobileOnly')
                     p $#{item.ratePerMonth}/month
-            div(class=(totalCount > 6 ? 'col-md-offset-7' : 'col-md-offset-7 hidePaginate')) 
-                ul(class='pagination centerMobilePaginate')
+            div(class=(totalCount > 6 ? 'col-md-offset-4 text-center' : 'col-md-offset-7 hidePaginate')) 
+                ul(class='pagination')
                     li
                         a(href='/results/#{previous}?city=#{city}&minSF=#{minSF}&maxSF=#{maxSF}&minPrice=#{minPrice}&maxPrice=#{maxPrice}')
                             span(aria-hidden='true') &laquo;
