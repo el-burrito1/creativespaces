@@ -20,7 +20,13 @@ var transporter = nodemailer.createTransport();
 // 	text: 'hello!'
 // });
 
-mongoose.connect('mongodb://localhost/buildings')
+// mongoose.connect('mongodb://localhost/buildings')
+
+if(global.process.env.MONGOLAB_URI){
+  mongoose.connect(global.process.env.MONGOLAB_URI);
+}else{
+  mongoose.connect('mongodb://localhost/buildings');
+}
 
 var app = express();
 
