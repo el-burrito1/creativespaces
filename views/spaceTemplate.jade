@@ -3,7 +3,7 @@ extends layout
 block content
     div(class='container')
         div(class='row')
-            div(class='col-md-12' style='height:100px;')
+            div(class='col-md-12' class='space-contain-bottom')
     div(class='container listingContainer' style='border-right:1px solid #E7E7E7;')
         div(class='row' style='border-top:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;')
             div(class='col-md-5 leftAdjust')
@@ -19,34 +19,24 @@ block content
                             if i === 0
                                 | 
                                 div(class='item active')
-                                    img(src='#{item}' style='width:100%;height:327px')
+                                    img(src='#{item}' class='carouselPhoto' style='')
                             else
                                 div(class='item')
-                                    img(src='#{item}' style='width:100%;height:327px')
+                                    img(src='#{item}' class='carouselPhoto' style='')
                     a(class='carousel-control left' href='#building-photos' role='button' data-slide='prev')
                         span(class='glyphicon glyphicon-chevron-left' aria-hidden='true')
                     a(class='carousel-control right' href='#building-photos' role='button' data-slide='next')
                         span(class='glyphicon glyphicon-chevron-right' aria-hidden='true')
                 for item, i in suites.imageSrc
                     if i === 3 || i === 7
-                        img(src='#{item}' data-carousel-number='#{i}' class='thumb')
+                        img(src='#{item}' data-carousel-number='#{i}' class='thumb mobileHide')
                     else
-                        img(src='#{item}' data-carousel-number='#{i}' class='thumb thumbsRight')
-            div(class='col-md-5' style='height:403px;max-height:100%;border-right:1px solid #E7E7E7;')
+                        img(src='#{item}' data-carousel-number='#{i}' class='thumb thumbsRight mobileHide')
+            div(class='col-md-5 mobile-height-adjust' style='border-right:1px solid #E7E7E7;')
                 h2= suites.address
                 h5 #{suites.city}, CA
                 p #{suites.description}
-            div(class='col-md-2')
-                form(role='form')
-                    div(class='form-group')
-                        input(type='name' class='form-control' placeholder='name' style='margin-top:30px; margin-bottom:10px;')
-                        input(type='email' class='form-control' placeholder='email' style='margin-bottom:15px;')
-                        button(class='btn btn-default' style='color:white;background-color:#9BCA4F;width:165px;') Tour Office
-    div(class='container')
-        div(class='row' style='border-right:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;margin-bottom:100px;')
-            div(class='col-md-5 leftAdjust')
-                div(id='map-canvas' class='map-canvas' style='width:100%;height:327px;')
-            div(class='col-md-3' style='height:327px;')
+            div(class='col-md-3 mobileOnly')
                 h4(style='margin-top:30px;') Available Space:
                 ul 
                     for val in suites.availableSuites
@@ -56,7 +46,32 @@ block content
                 ul
                     for val in suites.amenities
                         li= val 
-                            i(class='fa fa-check' style='float:right;margin-right:125px;color:#9BCA4F')
+                            i(class='fa fa-check' style='float:right;margin-right:56%;color:#9BCA4F')
+                br
+                br
+                i(class='fa fa-building-o' style='margin-right:10px;')
+                a(href='/flyers/canon_301_-_sl.pdf' download='301_Canon.pdf' style='') Download Building Flyer
+            div(class='col-md-2')
+                form(role='form' action='/email' method='post')
+                    div(class='form-group')
+                        input(type='name' class='form-control' placeholder='name' style='margin-top:30px; margin-bottom:10px;')
+                        input(type='email' class='form-control' placeholder='email' style='margin-bottom:15px;')
+                        button(class='btn btn-default mobile-button-adjust' style='color:white;background-color:#9BCA4F;') Tour Office
+    div(class='container')
+        div(class='row' style='border-right:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;margin-bottom:9%;')
+            div(class='col-md-5 leftAdjust')
+                div(id='map-canvas' class='map-canvas map-height' style='width:100%;')
+            div(class='col-md-3 mobileHide')
+                h4(style='margin-top:30px;') Available Space:
+                ul 
+                    for val in suites.availableSuites
+                        li= val
+                br 
+                h4 Amenities:
+                ul
+                    for val in suites.amenities
+                        li= val 
+                            i(class='fa fa-check' style='float:right;margin-right:47%;color:#9BCA4F')
                 br
                 br
                 i(class='fa fa-building-o' style='margin-right:10px;')
