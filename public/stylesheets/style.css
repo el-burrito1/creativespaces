@@ -137,7 +137,7 @@ a {
 	}
 
 	.backgroundImage{
-		background: url('/images/beachPier.jpg')  50% 0 no-repeat fixed;
+		background: url('https://s3-us-west-1.amazonaws.com/creativespacesla/public/images/beachPier.jpg')  50% 0 no-repeat fixed;
 	  	background-size: 100%;
 	  	height: 51px;
 	  	padding-bottom: 27%;
@@ -214,7 +214,7 @@ a {
 }
 
 .background{
-	background: url('/images/beachPier.jpg')  50% 0 no-repeat fixed; 
+	background: url('https://s3-us-west-1.amazonaws.com/creativespacesla/public/images/beachPier.jpg')  50% 0 no-repeat fixed; 
 	background-size: 100%;
 	position: relative;
 	padding: 100px 0;
