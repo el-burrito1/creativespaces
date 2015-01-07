@@ -63,7 +63,7 @@ app.get('/', function(req,res){
 		availableSuites  :    ['Suite 300 (1,400 SF)','Suite 400 (1,200 SF)','Suite 500 (2,500 SF)'],
 
 		amenities        :    ['Kitchen' , 'Reception' , 'Parking' ],
-		imageSrc         :    ['/images/officeExterior.jpg' , '/images/officeInterior.jpg' , '/images/officeCourtyard.jpg' , '/images/waitingRoom.jpg'],
+		imageSrc         :    ['/images/officeExterior.jpg' , '/images/officeInterior.JPG' , '/images/officeCourtyard.jpg' , '/images/waitingRoom.JPG'],
 	})
 
 	space.save();
