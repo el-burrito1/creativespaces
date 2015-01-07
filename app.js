@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var h5bp = require('h5bp');
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
@@ -29,6 +30,9 @@ if(global.process.env.MONGOLAB_URI){
 }
 
 var app = express();
+app.use(h5bp({ root: __dirname + '/public' }));
+app.use(express.compress());
+app.use(express.static(__dirname + '/public'));
 
 // all environments
 app.set('port', process.env.PORT || 3000);
