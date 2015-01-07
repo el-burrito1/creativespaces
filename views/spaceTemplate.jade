@@ -19,19 +19,19 @@ block content
                             if i === 0
                                 | 
                                 div(class='item active')
-                                    img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public/#{item}' class='carouselPhoto' style='')
+                                    img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public#{item}' class='carouselPhoto' style='')
                             else
                                 div(class='item')
-                                    img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public/#{item}' class='carouselPhoto' style='')
+                                    img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public#{item}' class='carouselPhoto' style='')
                     a(class='carousel-control left' href='#building-photos' role='button' data-slide='prev')
                         span(class='glyphicon glyphicon-chevron-left' aria-hidden='true')
                     a(class='carousel-control right' href='#building-photos' role='button' data-slide='next')
                         span(class='glyphicon glyphicon-chevron-right' aria-hidden='true')
                 for item, i in suites.imageSrc
                     if i === 3 || i === 7
-                        img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public/#{item}' data-carousel-number='#{i}' class='thumb mobileHide')
+                        img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public#{item}' data-carousel-number='#{i}' class='thumb mobileHide')
                     else
-                        img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public/#{item}' data-carousel-number='#{i}' class='thumb thumbsRight mobileHide')
+                        img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public#{item}' data-carousel-number='#{i}' class='thumb thumbsRight mobileHide')
             div(class='col-md-5 mobile-height-adjust' style='border-right:1px solid #E7E7E7;')
                 h2= suites.address
                 h5 #{suites.city}, CA
