@@ -29,9 +29,9 @@ block content
                         span(class='glyphicon glyphicon-chevron-right' aria-hidden='true')
                 for item, i in suites.imageSrc
                     if i === 3 || i === 7
-                        img(src='#{item}' data-carousel-number='#{i}' class='thumb mobileHide')
+                        img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public/#{item}' data-carousel-number='#{i}' class='thumb mobileHide')
                     else
-                        img(src='#{item}' data-carousel-number='#{i}' class='thumb thumbsRight mobileHide')
+                        img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public/#{item}' data-carousel-number='#{i}' class='thumb thumbsRight mobileHide')
             div(class='col-md-5 mobile-height-adjust' style='border-right:1px solid #E7E7E7;')
                 h2= suites.address
                 h5 #{suites.city}, CA
