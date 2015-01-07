@@ -27,15 +27,15 @@ $(document).on('ready' , function(){
 		$('.carousel').carousel($(this).data('carousel-number'))
 	})
 
-	function loadStyleSheet(src)
-	    if (document.createStyleSheet){
-	        document.createStyleSheet(src);
-	    }
-	    else {
-	        $("head").append($("<link rel='stylesheet' href='"+src+"' type='text/css' media='screen' />"));
-	    }
-	);
+	// function loadStyleSheet(src)
+	//     if (document.createStyleSheet){
+	//         document.createStyleSheet(src);
+	//     }
+	//     else {
+	//         $("head").append($("<link rel='stylesheet' href='"+src+"' type='text/css' media='screen' />"));
+	//     }
+	// );
 
-	loadStyleSheet('/stylesheets/style.css')
+	// loadStyleSheet('/stylesheets/style.css')
 
 })
