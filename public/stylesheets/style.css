@@ -136,6 +136,12 @@ a {
 		width: 57%;
 	}
 
+	.result-search-button{
+		color: white;
+		background-color: #9BCA4F;
+		width: 77%;
+	}
+
 /*	.backgroundImage{
 		background: url('https://s3-us-west-1.amazonaws.com/creativespacesla/public/images/beachPier.jpg')  50% 0 no-repeat fixed;
 	  	background-size: 100%;
