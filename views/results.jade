@@ -119,15 +119,7 @@ block content
                     h4(style='margin-top:90px;')
                 div(class='mobileHide col-md-2 resultsList')
                     p(style='margin-top:10px; font-weight:bold') $#{item.ratePerMonth}/month
-                        p 11,500 SF Available
-            for item in buildings
-                div(class='mobileOnly')
-                    img(src='https://s3-us-west-1.amazonaws.com/creativespacesla/public/#{item.imageSrc[0]}' class='mobilePhotos')
-                div(class='mobileOnly')
-                    h4
-                        a(href='/location/#{item.address}') #{item.address}
-                    h6= item.city
-                    p= item.smallDescription
+                        p 11,500 SF Building
                     h4()
                 div(class='mobileOnly')
                     p $#{item.ratePerMonth}/month
