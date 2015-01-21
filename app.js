@@ -68,6 +68,8 @@ app.get('/', function(req,res){
 
 		amenities        :    ['Kitchen' , 'Reception' , 'Parking' ],
 		imageSrc         :    ['images/officeExterior.jpg' , 'images/officeInterior.JPG' , 'images/officeCourtyard.jpg' , 'images/waitingRoom.JPG'],
+
+		buildingSize     :    '12,000'
 	})
 
 	space.save();
