@@ -56,13 +56,13 @@ a {
 	.carouselPhoto{
 		width: 100% !important;
 	}
-
+/*
 	.backgroundImage{
 		background: url('/images/mobileBackground.jpg')  50% 0 no-repeat fixed;
 	  	background-size: 100%;
 	  	height: 51px;
 	  	padding-bottom: 65%;
-	}
+	}*/
 
 	.inputFields{
 		width:36%;
