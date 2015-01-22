@@ -27,4 +27,19 @@ $(document).on('ready' , function(){
 		$('.carousel').carousel($(this).data('carousel-number'))
 	})
 
+	$('#emailForm').on('submit' , function(e){
+		e.preventDefault()
+		console.log($(this).serialize())
+		var contactInfo = $(this).serialize()
+
+		$.ajax({
+			type: 'POST',
+			url : '/email',
+			data: contactInfo,
+			success : console.log('success')
+		})
+
+	})
+
+
 })

@@ -3,7 +3,7 @@ html
   head
     title= title
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    style(type='text/css') .backgroundImage{background: url("./images/beverlyhillstopalosverdes-compressor.jpg") 50% 0 no-repeat fixed;background-size:100%;height:483px;padding-bottom:27%};
+    style(type='text/css') .backgroundImage{background: url("./images/beverlyhillstopalosverdes-compressor.jpg") 50% 0 no-repeat fixed;background-size:100%;height:385px;padding-bottom:32%};
     link(rel='stylesheet' , href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     //- link(href='http://fonts.googleapis.com/css?family=News+Cycle|Fjalla+One' rel='stylesheet' type='text/css') 
@@ -11,9 +11,9 @@ html
   body
     nav(class='navbar navbar-default navbar-fixed-top' style='height:82px;')
         a(href='/' class='navbar-brand')
-            img(src='/images/creativehorizontal.png' style='width:364px;height:57px;')
+            img(src='/images/creativehorizontal.png' class='logo logo-mobile')
     block content
-    nav(class='navbar navbar-default bottomNav')
+    nav(class='navbar navbar-default bottomNav mobile-bottom-nav')
         div(class='container')
             div(class='row')
                 //- div(class='col-md-2 col-xs-4')

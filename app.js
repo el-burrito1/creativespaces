@@ -13,6 +13,7 @@ var buildingModel = require('./models/buildingModel');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport();
+var sendgrid  = require('sendgrid')('spencer.spiegel','Tsukahara103');
 
 // transporter.sendMail({
 // 	from: 'spencer.spiegel@gmail.com',
@@ -52,6 +53,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req,res){
+
 	var space = new buildingModel({
 		
 		address          :   '301 North Canon Drive',
@@ -166,8 +168,20 @@ app.post('/create' , function(req,res){
 })
 
 app.post('/email' , function(req,res){
-	console.log('email')
-	res.send('hey')
+	console.log(req.body)
+	res.send('success')
+
+	var payload   = {
+	  to      : req.body.email,
+	  from    : 'spiegel@westmac.com',
+	  subject : 'Saying Hi',
+	  text    : 'Hey ' + req.body.name + ', This is my first email through SendGrid ya bish'
+	}
+
+	sendgrid.send(payload, function(err, json) {
+	  if (err) { console.error(err); }
+	  console.log(json);
+	});
 })
 
 

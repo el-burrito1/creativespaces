@@ -52,11 +52,11 @@ block content
                 i(class='fa fa-building-o' style='margin-right:10px;')
                 a(href='/flyers/canon_301_-_sl.pdf' download='301_Canon.pdf' style='') Download Building Flyer
             div(class='col-md-2')
-                form(role='form' action='/email' method='post')
+                form(role='form' id='emailForm' action='#')
                     div(class='form-group')
-                        input(type='name' class='form-control' placeholder='name' style='margin-top:30px; margin-bottom:10px;')
-                        input(type='email' class='form-control' placeholder='email' style='margin-bottom:15px;')
-                        button(class='btn btn-default mobile-button-adjust' style='color:white;background-color:#00B7FF;') Learn More
+                        input(name='name' class='form-control' placeholder='name' style='margin-top:30px; margin-bottom:10px;')
+                        input(name='email' type='email' class='form-control' placeholder='email' style='margin-bottom:15px;')
+                        button(type='submit' class='btn btn-default mobile-button-adjust' style='color:white;background-color:#00B7FF;') Learn More
     div(class='container')
         div(class='row' style='border-right:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;margin-bottom:9%;')
             div(class='col-md-5 leftAdjust')
