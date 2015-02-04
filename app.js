@@ -14,13 +14,8 @@ var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport();
 var sendgrid  = require('sendgrid')('spencer.spiegel','Tsukahara103');
-
-// transporter.sendMail({
-// 	from: 'spencer.spiegel@gmail.com',
-// 	to: 'spiegel@westmac.com',
-// 	subject: 'success!',
-// 	text: 'hello!'
-// });
+var email = sendgrid.Email();
+var request = require('request');
 
 // mongoose.connect('mongodb://localhost/buildings')
 
@@ -178,12 +173,25 @@ app.post('/email' , function(req,res){
 	  text    : 'Hey ' + req.body.name + ', This is my first email through SendGrid ya bish'
 	}
 
-	sendgrid.send(payload, function(err, json) {
-	  if (err) { console.error(err); }
-	  console.log(json);
-	});
-})
+	// var options = {
+	// 	host: 'https://api.sendgrid.com',
+	// 	path: '/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392',
+	// 	method: 'GET' 
+	// }
 
+	// http.request({
+	// 	host: 'https://api.sendgrid.com',
+	// 	path: '/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392'
+	// }, function(response){
+	// 	console.log(response)
+	// })
+
+	// sendgrid.send(payload, function(err, json) {
+	//   if (err) { console.error(err); }
+	//   console.log(json);
+	// });
+
+})
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
