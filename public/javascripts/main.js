@@ -31,11 +31,12 @@ $(document).on('ready' , function(){
 		e.preventDefault()
 		console.log($(this).serialize())
 		var contactInfo = $(this).serialize()
+		var address = $('#address').text()
 
 		$.ajax({
 			type: 'POST',
 			url : '/email',
-			data: contactInfo,
+			data: address,
 			success : console.log('success')
 		})
 

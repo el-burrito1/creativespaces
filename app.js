@@ -17,6 +17,24 @@ var sendgrid  = require('sendgrid')('spencer.spiegel','Tsukahara103');
 var email = sendgrid.Email();
 var request = require('request');
 
+// request.get('https://api.sendgrid.com/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392' , 
+// 	{'auth' : {'spencer.spiegel:Tsukahara103'},
+// 	function(error,response,body){
+// 	console.log(body)
+// })
+
+// var options = {
+//     url: 'https://api.sendgrid.com/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392',
+//     headers: {
+//         Authorization: 'c3BlbmNlci5zcGllZ2VsOlRzdWthaGFyYTEwMw=='
+//     }
+// };
+
+// request(options, function(error,response,body){
+// 	console.log(body)
+// })
+
+
 // mongoose.connect('mongodb://localhost/buildings')
 
 if(global.process.env.MONGOLAB_URI){
@@ -166,30 +184,18 @@ app.post('/email' , function(req,res){
 	console.log(req.body)
 	res.send('success')
 
-	var payload   = {
-	  to      : req.body.email,
-	  from    : 'spiegel@westmac.com',
-	  subject : 'Saying Hi',
-	  text    : 'Hey ' + req.body.name + ', This is my first email through SendGrid ya bish'
-	}
+	// var html_body = '<h1>Thank you for contacting us regarding ' + '</h1><br><h4>A repres'
 
-	// var options = {
-	// 	host: 'https://api.sendgrid.com',
-	// 	path: '/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392',
-	// 	method: 'GET' 
+	// var payload = {
+	//   to      : req.body.email,
+	//   from    : 'spiegel@westmac.com',
+	//   subject : 'Saying Hi',
+	//   html    : html_body
 	// }
 
-	// http.request({
-	// 	host: 'https://api.sendgrid.com',
-	// 	path: '/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392'
-	// }, function(response){
-	// 	console.log(response)
+	// sendgrid.send(payload , function(err,json){
+	// 	console.log(json)
 	// })
-
-	// sendgrid.send(payload, function(err, json) {
-	//   if (err) { console.error(err); }
-	//   console.log(json);
-	// });
 
 })
 
