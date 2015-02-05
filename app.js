@@ -69,29 +69,30 @@ app.get('/', function(req,res){
 
 	var space = new buildingModel({
 		
-		address          :   '301 North Canon Drive',
-		city             :   'Santa Monica',
+		address          :   '5340 Alla Road',
+		city             :   'Playa Vista',
 
-		description      :    'Village on Canon is located in the heart of Beverly Hills on N. Canon just one block east of Beverly Drive. The Village on Canon features distinct Mediterranean architecture and offers a central connecting courtyard in the middle of the building with a cascading fountain, bronze sculptures, and hand-painted decorative tiles.',
-		smallDescription :    'Mediterranean style creative space available for sublease.',
+		description      :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts. The Annex is for a culture. It's an ideal property for media, tech, production, product development or creative agencies. It is adjacent to heavies like Deutsch, Sony, Facebook, Belkin, Digital Domain, and Toms Shoes.",
+		smallDescription :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts.",
 
-		ratePerSF        :     2.19,
-		ratePerMonth     :     3500,
+		ratePerSF        :     2.95,
+		ratePerMonth     :     26000,
 
-		SFofSpaces       :    [1400 , 1200 , 2500] ,
-		availableSuites  :    ['Suite 300 (1,400 SF)','Suite 400 (1,200 SF)','Suite 500 (2,500 SF)'],
+		SFofSpaces       :    [8977 , 12407 , 9466 , 50000] ,
+		availableSuites  :    ['Space 205 (8,977 SF)','Space 108 (12,407 SF)','Space 109 (9,466 SF)','Space 210 (50,000 SF)'],
 
-		amenities        :    ['Kitchen' , 'Reception' , 'Parking' ],
-		imageSrc         :    ['images/officeExterior.jpg' , 'images/officeInterior.JPG' , 'images/officeCourtyard.jpg' , 'images/waitingRoom.JPG'],
+		amenities        :    ['Reception' , 'Conference' , 'Kitchen'],
+		imageSrc         :    ['annex/outside.jpg' , 'annex/table.jpg' , 'annex/inside.jpg' , 'annex/patio.jpg'],
 
-		buildingSize     :    '12,000'
-	})
+		buildingSize     :    '80,850'
+	})	
 
 	space.save();
 	res.render('index')
 });
 
 app.get('/results/:page' , function(req,res){
+	console.log(req.query)
 	var city = req.query.city;
 	var minPrice = req.query.minPrice || 0;
 	var maxPrice = req.query.maxPrice || 999999999;
@@ -118,6 +119,7 @@ app.get('/results/:page' , function(req,res){
 		.skip(req.params.page * 6)
 		.limit(6)
 		.exec(function(err,docs){
+			console.log(docs)
 			var previous = Math.max(0,req.params.page - 1);
 			var next = Math.min(pages.length-1,parseInt(req.params.page)+1);
 			var count = [];
@@ -184,18 +186,18 @@ app.post('/email' , function(req,res){
 	console.log(req.body)
 	res.send('success')
 
-	// var html_body = '<h1>Thank you for contacting us regarding ' + '</h1><br><h4>A repres'
+	var html_body = '<p>Thank you for contacting us regarding ' + req.body.address + '. A representative will contact you shortly.<p> <br> <img src="https://s3-us-west-1.amazonaws.com/creativespacesla/public/images/emailLogo.png">'
 
-	// var payload = {
-	//   to      : req.body.email,
-	//   from    : 'spiegel@westmac.com',
-	//   subject : 'Saying Hi',
-	//   html    : html_body
-	// }
+	var payload = {
+	  to      : req.body.email,
+	  from    : 'listings@creativespacesla.com',
+	  subject : req.body.address,
+	  html    : html_body
+	}
 
-	// sendgrid.send(payload , function(err,json){
-	// 	console.log(json)
-	// })
+	sendgrid.send(payload , function(err,json){
+		console.log(json)
+	})
 
 })
 

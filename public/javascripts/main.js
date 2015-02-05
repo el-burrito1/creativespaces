@@ -3,6 +3,7 @@ $(document).on('ready' , function(){
 	// $('.searchColumn').height(($('.resultsList').length)*55) 
 	// $('#mainContain').height(690 + (($('.resultAdd').length)*200))
 
+
 	function initialize() {
 	  var mapOptions = {
 	    zoom: 18,
@@ -29,14 +30,13 @@ $(document).on('ready' , function(){
 
 	$('#emailForm').on('submit' , function(e){
 		e.preventDefault()
-		console.log($(this).serialize())
+		// console.log($(this).serialize())
 		var contactInfo = $(this).serialize()
-		var address = $('#address').text()
-
+		console.log(contactInfo)
 		$.ajax({
 			type: 'POST',
 			url : '/email',
-			data: address,
+			data: contactInfo,
 			success : console.log('success')
 		})
 

@@ -23,6 +23,10 @@ a {
 		/*color: green;*/
 	}
 
+	.slider-size{
+		height:220px;
+	}
+
 	.backgroundImage{
 /*		background: url("./images/coverPhoto-compressor.jpg") 50% 0 no-repeat fixed;
 		background-size:100%;
@@ -103,6 +107,7 @@ a {
 		margin-bottom: 15%;
 		margin-left:-4%;
 	}
+
 }
 
 /*vvvvvvvv TABLET vvvvvvvv*/
@@ -154,6 +159,10 @@ a {
 		max-width:100%;
 	}
 
+	.slider-size{
+		height:354px;
+	}
+
 	.search-office-title{
 		color:#077CA9;
 		margin-left:6%;
@@ -187,7 +196,14 @@ a {
 
 	.carouselPhoto{
 		width:100%;
-		height:327px;
+		/*height:327px;*/
+		height:100%;
+	}
+
+	.carouselPhotoResize>img{
+		width: auto;
+		height:400px;
+		max-height:400px;
 	}
 
 	.inputFields{
@@ -340,6 +356,8 @@ a {
 .hidePaginate{
 	display: none;
 }
+
+
 
 /*4E9BCA looks good as blue*/
 
