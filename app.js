@@ -192,7 +192,8 @@ app.post('/email' , function(req,res){
 	  to      : req.body.email,
 	  from    : 'listings@creativespacesla.com',
 	  subject : req.body.address,
-	  html    : html_body
+	  html    : html_body,
+	  bcc     : 'spiegel@westmac.com'
 	}
 
 	sendgrid.send(payload , function(err,json){
