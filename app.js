@@ -67,27 +67,27 @@ if ('development' == app.get('env')) {
 
 app.get('/', function(req,res){
 
-	var space = new buildingModel({
+	// var space = new buildingModel({
 		
-		address          :   '5340 Alla Road',
-		city             :   'Playa Vista',
+	// 	address          :   '5340 Alla Road',
+	// 	city             :   'Playa Vista',
 
-		description      :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts. The Annex is for a culture. It's an ideal property for media, tech, production, product development or creative agencies. It is adjacent to heavies like Deutsch, Sony, Facebook, Belkin, Digital Domain, and Toms Shoes.",
-		smallDescription :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts.",
+	// 	description      :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts. The Annex is for a culture. It's an ideal property for media, tech, production, product development or creative agencies. It is adjacent to heavies like Deutsch, Sony, Facebook, Belkin, Digital Domain, and Toms Shoes.",
+	// 	smallDescription :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts.",
 
-		ratePerSF        :     2.95,
-		ratePerMonth     :     26000,
+	// 	ratePerSF        :     2.95,
+	// 	ratePerMonth     :     26000,
 
-		SFofSpaces       :    [8977 , 12407 , 9466 , 50000] ,
-		availableSuites  :    ['Space 205 (8,977 SF)','Space 108 (12,407 SF)','Space 109 (9,466 SF)','Space 210 (50,000 SF)'],
+	// 	SFofSpaces       :    [8977 , 12407 , 9466 , 50000] ,
+	// 	availableSuites  :    ['Space 205 (8,977 SF)','Space 108 (12,407 SF)','Space 109 (9,466 SF)','Space 210 (50,000 SF)'],
 
-		amenities        :    ['Reception' , 'Conference' , 'Kitchen'],
-		imageSrc         :    ['annex/outside.jpg' , 'annex/table.jpg' , 'annex/inside.jpg' , 'annex/patio.jpg'],
+	// 	amenities        :    ['Reception' , 'Conference' , 'Kitchen'],
+	// 	imageSrc         :    ['annex/outside.jpg' , 'annex/table.jpg' , 'annex/inside.jpg' , 'annex/patio.jpg'],
 
-		buildingSize     :    '80,850'
-	})	
+	// 	buildingSize     :    '80,850'
+	// })	
 
-	space.save();
+	// space.save();
 	res.render('index')
 });
 
