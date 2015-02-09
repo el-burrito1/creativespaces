@@ -13,27 +13,9 @@ var buildingModel = require('./models/buildingModel');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport();
-var sendgrid  = require('sendgrid')('spencer.spiegel','Tsukahara103');
+var sendgrid  = require('sendgrid')('spencer.spiegel','westmac');
 var email = sendgrid.Email();
 var request = require('request');
-
-// request.get('https://api.sendgrid.com/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392' , 
-// 	{'auth' : {'spencer.spiegel:Tsukahara103'},
-// 	function(error,response,body){
-// 	console.log(body)
-// })
-
-// var options = {
-//     url: 'https://api.sendgrid.com/v3/templates/e9dee0bb-978e-4639-8b87-8f1918e3f392',
-//     headers: {
-//         Authorization: 'c3BlbmNlci5zcGllZ2VsOlRzdWthaGFyYTEwMw=='
-//     }
-// };
-
-// request(options, function(error,response,body){
-// 	console.log(body)
-// })
-
 
 // mongoose.connect('mongodb://localhost/buildings')
 

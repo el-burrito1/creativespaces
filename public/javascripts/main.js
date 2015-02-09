@@ -30,6 +30,7 @@ $(document).on('ready' , function(){
 
 	$('#emailForm').on('submit' , function(e){
 		e.preventDefault()
+		$(this)[0].reset()
 		$('#spinner').addClass('fa fa-spinner fa-spin')
 		var contactInfo = $(this).serialize()
 		console.log(contactInfo)
