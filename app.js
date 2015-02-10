@@ -9,20 +9,19 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var buildingModel = require('./models/buildingModel');
+var resultModel = require('./models/resultModel');
+var listingModel = require('./models/listingModel');
+var tenantModel = require('./models/tenantModel');
 var mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport();
 var sendgrid  = require('sendgrid')('spencer.spiegel','westmac');
 var email = sendgrid.Email();
-var request = require('request');
-
-// mongoose.connect('mongodb://localhost/buildings')
 
 if(global.process.env.MONGOLAB_URI){
   mongoose.connect(global.process.env.MONGOLAB_URI);
 }else{
-  mongoose.connect('mongodb://localhost/buildings');
+  mongoose.connect('mongodb://localhost/creativespaces');
+  // mongoose.connect('mongodb://localhost/results')
+  // mongoose.connect('mongodb://localhost/tenants')
 }
 
 var app = express();
@@ -82,7 +81,7 @@ app.get('/results/:page' , function(req,res){
 	var minSF = req.query.minSF || 0;
 	var maxSF = req.query.maxSF || 999999999;
 
-	buildingModel.find({
+	resultModel.find({
 		city          :  req.query.city,
 		ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
 		SFofSpaces    : {$gte : minSF    , $lte : maxSF}
@@ -93,7 +92,7 @@ app.get('/results/:page' , function(req,res){
 		for(var i = 1 ; i < paginate + 1; i++){
 			pages.push(i)
 		}
-		buildingModel.find({
+		resultModel.find({
 			city          :  req.query.city,
 			ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
 			SFofSpaces    : {$gte : minSF    , $lte : maxSF}
@@ -114,7 +113,7 @@ app.get('/results/:page' , function(req,res){
 				currentPage: currentPage,
 				previous: previous,
 				next: next,
-				buildings:docs, 
+				results:docs, 
 				paginate:pages, 
 				city:req.query.city,
 				minSF:req.query.minSF,
@@ -138,32 +137,6 @@ app.get('/admin' , function(req,res){
 	res.render('admin')
 })
 
-app.post('/create' , function(req,res){
-	console.log(req)
-	var space = new buildingModel({
-		address           : req.body.address,
-		city              : req.body.city,
-		
-		latitude          : req.body.latitude,
-		longitude         : req.body.longitude,
-		
-		description       : req.body.description,
-		smallDescription  : req.body.smallDescription,
-		
-		ratePerSF         : req.body.ratePerSF,
-		ratePerMonth      : req.body.ratePerMonth,
-		
-		SFofSpaces        : req.body.SFofSpaces,
-		availableSuites   : req.body.availableSuites,
-
-		amenities         : req.body.amenities,
-		imageSrc          : req.body.imageSrc
-	})
-
-	space.save()
-	res.redirect('/admin')
-})
-
 app.post('/email' , function(req,res){
 	console.log(req.body)
 	res.send('success')
@@ -182,6 +155,45 @@ app.post('/email' , function(req,res){
 		console.log(json)
 	})
 
+})
+
+app.post('/createresult' , function(req,res){
+	console.log(req.body)
+	var StringofSpaces = req.body.SFofSpaces.split(',')
+	var SFofSpaces = [];
+	for(var i = 0 ; i < StringofSpaces.length ; i++){
+		SFofSpaces.push(parseFloat(i))
+	}
+	var result = new resultModel({
+		name          : req.body.name,
+		address       : req.body.address,
+		city          : req.body.city,
+		footnote      : req.body.footnote,
+		pricePerMonth : parseFloat(req.body.pricePerMonth),
+		pricePerSF    : parseFloat(req.body.pricePerSF),
+		buildingSize  : req.body.buildingSize,
+		thumbnail     : req.body.thumbnail,
+		SFofSpaces    : SFofSpaces
+	})
+	result.save()
+	res.send('success')
+})
+
+app.post('/createlisting' , function(req,res){
+	console.log(req.body)
+	var listing = new listingModel({
+		name            : req.body.name,
+		address         : req.body.address,
+		city            : req.body.city,
+		description     : req.body.description,
+		availableSpaces : req.body.availableSpaces.split(','),
+		amenities       : req.body.amenities.split(','),
+		photos          : req.body.photos.split(','),
+		coordinates     : req.body.coordinates.split(','),
+		buildingFlyer   : req.body.buildingFlyer
+	})
+	listing.save()
+	res.send('success')
 })
 
 http.createServer(app).listen(app.get('port'), function(){

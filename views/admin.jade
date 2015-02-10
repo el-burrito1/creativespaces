@@ -2,52 +2,70 @@ extends layout
 
 block content
     div(class='container')
-        div(class='row')
-            div(class='col-md-12' style='height:100px;')
-    div(class='container listingContainer' style='border-right:1px solid #E7E7E7;')
-        form(action='/create' method='post')
-            div(class='row' style='border-top:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;border-left:1px solid #E7E7E7')
-                div(class='col-md-5 leftAdjust')
-                    h4 Image Sources:
-                        textarea(name='imageSrc' type='text' class='form-control' rows='3')
-                    h4 Latitude
-                        input(name='latitude' type='text')
-                    h4 Longitude
-                        input(name='longitude' type='text')
-                    h4(style='margin-top:30px;') Available Spaces (Suite + SF):
-                        textarea(name='availableSuites' type='text' class='form-control' rows='2')
-                    br 
-                    h4 Amenities:
-                        textarea(name='amenities' type='text' class='form-control' rows='2')
-                div(class='col-md-5' style='height:403px;max-height:100%;border-right:1px solid #E7E7E7;border-left:1px solid #E7E7E7')
-                    h4 Address:
-                        input(name='address' type='text')
-                    select(name='city' class='form-control')
-                        option Location
-                        option Venice
-                        option Santa Monica
-                        option Culver City
-                        option Hollywood
-                        option Downtown/Arts District
-                        option Echo Park
-                        option Pasadena
-                    h4 Description:
-                        textarea(name='description' type='text' class='form-control' rows='3')
-                    h4 Small Description:
-                        textarea(name='smallDescription' type='text' class='form-control' rows='3')
-                    h4 Price/SF/Month:
-                        input(name='ratePerSF' type='text')
-                    h4 Total Price/Month:
-                        input(name='ratePerMonth' type='text')
-                    h4 SF of spaces
-                        input(name='SFofSpaces' type='text')
-                div(class='col-md-2')
-                    form(role='form')
-                        div(class='form-group')
-                            button(type='submit' class='btn btn-default' style='color:white;background-color:#9BCA4F;width:165px;margin-top:100px;') Create Listing
-        div(class='container')
-            div(class='row' style='border-right:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;margin-bottom:100px;border-left:1px solid #E7E7E7')
-                div(class='col-md-5 leftAdjust')
-                div(class='col-md-3' style='height:327px;border-left:1px solid #E7E7E7')
+        div(class='row' style='margin-top:100px;margin-bottom:18%')
+            div(class='col-md-4')
+                h3 resultSchema
+                form(role='form' id='resultForm' action='#')
+                    label name
+                    input(name='name' type='text' class='adminForm' placeholder='String')
+                    br
+                    label address
+                    input(name='address' type='text' class='adminForm' placeholder='String')
+                    br
+                    label city
+                    input(name='city' type='text' class='adminForm' placeholder='String')
+                    br
+                    label footnote
+                    input(name='footnote' type='text' class='adminForm' placeholder='String')
+                    br
+                    label pricePerMonth
+                    input(name='pricePerMonth' type='text' class='adminForm' placeholder='Number')
+                    br
+                    label pricePerSF
+                    input(name='pricePerSF' type='text' class='adminForm' placeholder='Number')
+                    br
+                    label buildingSize
+                    input(name='buildingSize' type='text' class='adminForm' placeholder='String')
+                    br
+                    label thumbnail
+                    input(name='thumbnail' type='text' class='adminForm' placeholder='String')
+                    br
+                    label SFofSpaces
+                    input(name='SFofSpaces' type='text' class='adminForm' placeholder='[Number]')
+                    button(type='submit' class='btn btn-default' style='color:white;background-color:#00B7FF;') Submit
+            div(class='col-md-4')
+                h3 listingSchema
+                form(role='form' id='listingForm' action='#')
+                    label name
+                    input(name='name' type='text' class='adminForm' placeholder='String')
+                    br
+                    label address
+                    input(name='address' type='text' class='adminForm' placeholder='String')
+                    br
+                    label city
+                    input(name='city' type='text' class='adminForm' placeholder='String')
+                    br
+                    label description
+                    input(name='description' type='text' class='adminForm' placeholder='String')
+                    br
+                    label availableSpaces
+                    input(name='availableSpaces' type='text' class='adminForm' placeholder='[String]')
+                    br
+                    label amenities 
+                    input(name='amenities' type='text' class='adminForm' placeholder='[String]')
+                    br
+                    label photos
+                    input(name='photos' type='text' class='adminForm' placeholder='[String]')
+                    br
+                    label coordinates
+                    input(name='coordinates' type='text' class='adminForm' placeholder='[coordinates]')
+                    br
+                    label buildingFlyer
+                    input(name='buildingFlyer' type='text' class='adminForm' placeholder='String')
+                    button(type='submit' class='btn btn-default' style='color:white;background-color:#00B7FF;') Submit
+
+
+
+
 
 

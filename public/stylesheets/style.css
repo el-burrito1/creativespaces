@@ -357,6 +357,11 @@ a {
 	display: none;
 }
 
+.adminForm{
+	float: right;
+	margin-right: 20%;
+}
+
 
 
 /*4E9BCA looks good as blue*/

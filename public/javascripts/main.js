@@ -30,7 +30,6 @@ $(document).on('ready' , function(){
 
 	$('#emailForm').on('submit' , function(e){
 		e.preventDefault()
-		$(this)[0].reset()
 		$('#spinner').addClass('fa fa-spinner fa-spin')
 		var contactInfo = $(this).serialize()
 		console.log(contactInfo)
@@ -48,6 +47,32 @@ $(document).on('ready' , function(){
 			success : success()
 		})
 
+		$(this)[0].reset()
+
+	})
+
+	$('#resultForm').on('submit' , function(e){
+		e.preventDefault()
+		var resultData = $(this).serialize()
+		$.ajax({
+			type: 'POST',
+			url:  '/createresult',
+			data: resultData,
+			success : function(){console.log('result created')}
+		})
+		$(this)[0].reset()
+	})
+
+	$('#listingForm').on('submit' , function(e){
+		e.preventDefault()
+		var listingData = $(this).serialize()
+		$.ajax({
+			type: 'POST',
+			url:  '/createlisting',
+			data: listingData,
+			success : function(){console.log('listing created')}
+		})
+		$(this)[0].reset()
 	})
 
 
