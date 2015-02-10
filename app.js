@@ -77,7 +77,6 @@ app.get('/results/:page' , function(req,res){
 	var city = req.query.city;
 	var minPrice = req.query.minPrice || 0;
 	var maxPrice = req.query.maxPrice || 999999999;
-
 	var minSF = req.query.minSF || 0;
 	var maxSF = req.query.maxSF || 999999999;
 
@@ -115,6 +114,7 @@ app.get('/results/:page' , function(req,res){
 				next: next,
 				results:docs, 
 				paginate:pages, 
+				price: req.body.price,
 				city:req.query.city,
 				minSF:req.query.minSF,
 				maxSF:req.query.maxSF,
@@ -181,6 +181,11 @@ app.post('/createresult' , function(req,res){
 
 app.post('/createlisting' , function(req,res){
 	console.log(req.body)
+	var StringofCoordinates = req.body.coordinates.split(',');
+	var coordinates = [];
+	for(var i = 0 ; i < StringofCoordinates.length ; i++){
+		coordinates.push(parseFloat(i))
+	}
 	var listing = new listingModel({
 		name            : req.body.name,
 		address         : req.body.address,
@@ -189,7 +194,7 @@ app.post('/createlisting' , function(req,res){
 		availableSpaces : req.body.availableSpaces.split(','),
 		amenities       : req.body.amenities.split(','),
 		photos          : req.body.photos.split(','),
-		coordinates     : req.body.coordinates.split(','),
+		coordinates     : coordinates,
 		buildingFlyer   : req.body.buildingFlyer
 	})
 	listing.save()

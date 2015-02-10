@@ -87,7 +87,10 @@ block content
                     p= item.footnote
                     h4(style='margin-top:90px;')
                 div(class='mobileHide col-md-2 resultsList')
-                    p(style='margin-top:10px; font-weight:bold') $#{item.ratePerMonth}/month
+                if item.price = 'ratePerSF'
+                    p(style='margin-top:10px; font-weight:bold') $#{item.pricePerSF}/SF/month
+                else 
+                    p(style='margin-top:10px; font-weight:bold') $#{item.pricePerMonth}/month
                         p #{item.buildingSize} SF Building
                     h4()
                 div(class='mobileOnly')
