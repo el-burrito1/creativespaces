@@ -127,9 +127,9 @@ app.get('/results/:page' , function(req,res){
 
 app.get('/location/:id' , function(req,res){
 	console.log('id = ' + req.params.id)
-	buildingModel.find({address: req.params.id}, function(err,docs){
+	listingModel.find({address: req.params.id}, function(err,docs){
 		console.log(docs)
-		res.render('spaceTemplate' , {suites : docs[0]})
+		res.render('spaceTemplate' , {listing : docs[0]})
 	})
 });
 
