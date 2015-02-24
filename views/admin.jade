@@ -3,36 +3,38 @@ extends layout
 block content
     div(class='container')
         div(class='row' style='margin-top:100px;margin-bottom:18%')
-            div(class='col-md-4')
+            div(class='col-md-5')
                 h3 resultSchema
                 form(role='form' id='resultForm' action='#')
-                    label name
-                    input(name='name' type='text' class='adminForm' placeholder='String')
-                    br
-                    label address
-                    input(name='address' type='text' class='adminForm' placeholder='String')
-                    br
-                    label city
-                    input(name='city' type='text' class='adminForm' placeholder='String')
-                    br
-                    label footnote
-                    input(name='footnote' type='text' class='adminForm' placeholder='String')
-                    br
-                    label pricePerMonth
-                    input(name='pricePerMonth' type='text' class='adminForm' placeholder='Number')
-                    br
-                    label pricePerSF
-                    input(name='pricePerSF' type='text' class='adminForm' placeholder='Number')
-                    br
-                    label buildingSize
-                    input(name='buildingSize' type='text' class='adminForm' placeholder='String')
-                    br
-                    label thumbnail
-                    input(name='thumbnail' type='text' class='adminForm' placeholder='String')
-                    br
-                    label SFofSpaces
-                    input(name='SFofSpaces' type='text' class='adminForm' placeholder='[Number]')
-                    button(type='submit' class='btn btn-default' style='color:white;background-color:#00B7FF;') Submit
+                    div(class='form-group')
+                        label(for='name') name
+                        input(class='form-control' name='name' id='name' type='text' class='adminForm' placeholder='The Annex')
+                        br
+                        label(for='address') address
+                        input(class='form-control' name='address' id='address' type='text' class='adminForm' placeholder='5340 Alla Road')
+                        br
+                        label city
+                        input(class='form-control' name='city' type='text' class='adminForm' placeholder='Playa Vista')
+                        br
+                        label footnote
+                        textarea(class='form-control' rows='6' name='footnote' type='text' class='adminForm' placeholder="The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts.")
+                        br
+                        label pricePerMonth
+                        input(class='form-control' name='pricePerMonth' type='text' class='adminForm' placeholder='26000')
+                        br
+                        label pricePerSF
+                        input(class='form-control' name='pricePerSF' type='text' class='adminForm' placeholder='4.00')
+                        br
+                        label buildingSize
+                        input(class='form-control' name='buildingSize' type='text' class='adminForm' placeholder='80,850')
+                        br
+                        label thumbnail
+                        input(class='form-control' name='thumbnail' type='text' class='adminForm' placeholder='https://s3-us-west-1.amazonaws.com/creativespacesla/public/thumbnails/inside.jpg')
+                        br
+                        label SFofSpaces
+                        input(class='form-control' name='SFofSpaces' type='text' class='adminForm' placeholder='8977, 12407, 9466, 50000')
+                        br
+                        button(type='submit' class='btn btn-default' style='color:white;background-color:#00B7FF;') Submit
                 h4 Example
                 p {
                 p name: The Annex,
@@ -45,36 +47,41 @@ block content
                 p thumbnail: https://s3-us-west-1.amazonaws.com/creativespacesla/public/thumbnails/inside.jpg,
                 p SFofSpaces: 8977, 12407, 9466, 50000
                 p }
-            div(class='col-md-4 col-md-offset-2')
+                h4 Thumbnail size reference:
+                ul
+                    li Height: 1.6 Inches , Width: 2.13 Inches
+            div(class='col-md-7')
                 h3 listingSchema
                 form(role='form' id='listingForm' action='#')
-                    label name
-                    input(name='name' type='text' class='adminForm' placeholder='String')
-                    br
-                    label address
-                    input(name='address' type='text' class='adminForm' placeholder='String')
-                    br
-                    label city
-                    input(name='city' type='text' class='adminForm' placeholder='String')
-                    br
-                    label description
-                    input(name='description' type='text' class='adminForm' placeholder='String')
-                    br
-                    label availableSpaces
-                    input(name='availableSpaces' type='text' class='adminForm' placeholder='[String]')
-                    br
-                    label amenities 
-                    input(name='amenities' type='text' class='adminForm' placeholder='[String]')
-                    br
-                    label photos
-                    input(name='photos' type='text' class='adminForm' placeholder='[String]')
-                    br
-                    label coordinates
-                    input(name='coordinates' type='text' class='adminForm' placeholder='[coordinates]')
-                    br
-                    label buildingFlyer
-                    input(name='buildingFlyer' type='text' class='adminForm' placeholder='String')
-                    button(type='submit' class='btn btn-default' style='color:white;background-color:#00B7FF;') Submit
+                    div(class='form-group')
+                        label name
+                        input(class='form-control' name='name' type='text' class='adminForm' placeholder='The Annex')
+                        br
+                        label address
+                        input(class='form-control' name='address' type='text' class='adminForm' placeholder='5340 Alla Road')
+                        br
+                        label city
+                        input(class='form-control' name='city' type='text' class='adminForm' placeholder='Playa Vista')
+                        br
+                        label description
+                        textarea(class='form-control' rows='6' name='description' type='text' class='adminForm' placeholder="The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts. The Annex is for a culture. It's an ideal property for media, tech, production, product development or creative agencies. It is adjacent to heavies like Deutsch, Sony, Facebook, Belkin, Digital Domain, and Toms Shoes.")
+                        br
+                        label availableSpaces
+                        textarea(class='form-control' rows='6' name='availableSpaces' type='text' class='adminForm' placeholder='Space 205 (8,977 SF). Space 108 (12,407 SF). Space 109 (9,466 SF). Space 210 (50,000 SF)')
+                        br
+                        label amenities 
+                        textarea(class='form-control' rows='5' name='amenities' type='text' class='adminForm' placeholder='Reception, Conference, Kitchen')
+                        br
+                        label photos
+                        textarea(class='form-control' rows='6' name='photos' type='text' class='adminForm' placeholder='https://s3-us-west-1.amazonaws.com/creativespacesla/public/annex/inside.jpg, https://s3-us-west-1.amazonaws.com/creativespacesla/public/annex/outside.jpg, https://s3-us-west-1.amazonaws.com/creativespacesla/public/annex/patio.jpg')
+                        br
+                        label coordinates
+                        input(class='form-control' name='coordinates' type='text' class='adminForm' placeholder='[latitude, longitude]')
+                        br
+                        label buildingFlyer
+                        input(class='form-control' name='buildingFlyer' type='text' class='adminForm' placeholder='https://s3-us-west-1.amazonaws.com/creativespacesla/public/buildingFlyers/canon_301_-_sl.pdf')
+                        br
+                        button(type='submit' class='btn btn-default' style='color:white;background-color:#00B7FF;') Submit
                 h4 Example
                 p {
                 p name: The Annex,
@@ -83,9 +90,13 @@ block content
                 p description: The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts. The Annex is for a culture. It's an ideal property for media, tech, production, product development or creative agencies. It is adjacent to heavies like Deutsch, Sony, Facebook, Belkin, Digital Domain, and Toms Shoes.,
                 p availableSpaces: Space 205 (8,977 SF), Space 108 (12,407 SF), Space 109 (9,466 SF), Space 210 (50,000 SF)
                 p amenities: Reception, Conference, Kitchen,
+                p photos: https://s3-us-west-1.amazonaws.com/creativespacesla/public/annex/inside.jpg, https://s3-us-west-1.amazonaws.com/creativespacesla/public/annex/outside.jpg, https://s3-us-west-1.amazonaws.com/creativespacesla/public/annex/patio.jpg
                 p coordinates: 33.977509, -118.425329,
                 p buildingFlyer: https://s3-us-west-1.amazonaws.com/creativespacesla/public/buildingFlyers/canon_301_-_sl.pdf
                 p }
+                h4 Photos size reference:
+                ul
+                    li Height: 4.72 Inches , Width: 6.29 Inches
 
 
 

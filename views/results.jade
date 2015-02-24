@@ -3,49 +3,8 @@ extends layout
 block content
     div(class='container')
         div(class='row' id='mainContain' style='margin-top:82px;')
-            div(class="panel-group mobileOnly" id="accordion" role="tablist" aria-multiselectable="true") 
-                div(class="panel panel-default")
-                    div(class="panel-heading" role="tab" id="headingOne")
-                        a(class='collapsed' data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded='false' aria-controls="collapseOne" style='margin-left:65%;color:#077CA9')  new search
-                            i(class='fa fa-bars' style='margin-left: 3%')
-                    div(id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
-                        div(class="panel-body") 
-                            form(action='/results' method='get')
-                                div(class='col-md-offset-3 col-md-2 col-sm-offset-1 col-sm-3 col-xs-offset-1 col-xs-10' style='margin-top:-10%')
-                                    select(name='city' class='form-control locationList')
-                                        option Location
-                                        option Venice
-                                        option Santa Monica
-                                        option Playa Vista
-                                        option Culver City
-                                        option Hollywood
-                                        option Downtown/Arts District
-                                        option Echo Park
-                                        option Pasadena
-                                div(class='col-md-4 col-sm-6 col-xs-offset-1 col-xs-12 col-centered')
-                                    form(class='form-inline' role='form')
-                                        div(class='form-group')
-                                            div(class='input-group')
-                                                p(style='font-weight:bold') Space Available (SF)
-                                                input(name='minSF' class='inputFields')
-                                                label(style='margin:5px;') to
-                                                input(name='maxSF' class='inputFields')
-                                                br 
-                                                br
-                                                p(style='font-weight:bold') Price Range
-                                                input(name='minPrice' class='inputFields')
-                                                label(style='margin:5px;') to
-                                                input(name='maxPrice' class='inputFields')
-                                    div(class='radio')
-                                        label(class='radio-inline')
-                                            input(name='price' value='ratePerMonth' type='radio' id='radio') 
-                                            span $/month
-                                        label(class='radio-inline')
-                                            input(name='price' value='ratePerSF' type='radio')
-                                            span $/sf/month
-                                    button(type='submit' class='btn searchButton') search
             form(class='mobileHide tabletHide' action='/results' method='get')
-                div(class='col-md-3 searchColumn') 
+                div(class='col-md-3 searchColumn')
                     select(name='city' class='form-control' style='margin-bottom:20px;width:200px;')
                         option Location
                         option Venice
@@ -77,32 +36,42 @@ block content
                             input(name='price' type='radio')
                             span $/sf/month
                     button(type='submit' class='btn result-search-button') search
-            for item in results
-                div(class='mobileHide col-md-offset-1 col-md-2 resultsList resultAdd')
-                    img(src='#{item.thumbnail}' class='resultPhotos')
-                div(class='mobileHide col-md-4 resultsList')
-                    h4
-                        a(href='/location/#{item.address}') #{item.address}
-                    h6= item.city 
-                    p= item.footnote
-                    h4(style='margin-top:90px;')
-                div(class='mobileHide col-md-2 resultsList')
-                if item.price = 'ratePerSF'
-                    p(style='margin-top:10px; font-weight:bold') $#{item.pricePerSF}/SF/month
-                else 
-                    p(style='margin-top:10px; font-weight:bold') $#{item.pricePerMonth}/month
-                        p #{item.buildingSize} SF Building
-                    h4()
-                div(class='mobileOnly')
-                    img(src='#{item.thumbnail}' class='mobilePhotos')
-                    div(class='mobileOnly' style='margin-left:4%')
-                        h4
+            if totalCount == 0
+                div(style='margin-top: 100px; margin-left:28%') 
+                    h4 Sorry! We didn't find anything that matched your search.
+                    br
+                    br
+                    p If you send us an email we'll open up a personal search to find a location that fits your needs.
+                    a personal-support@creativespacesla.com
+            else
+                for item in results
+                    div(class='mobileHide col-md-offset-1 col-md-2 resultsList resultAdd')
+                        img(src='#{item.thumbnail}' alt='Creative Office Space in #{item.city}' class='resultPhotos')
+                    div(class='mobileHide col-md-4 resultsList')
+                        h4 
                             a(href='/location/#{item.address}') #{item.address}
-                        h6= item.city
+                        h6= item.city 
+                        p= item.footnote
+                        h4(style='margin-top:90px;')
+                    div(class='mobileHide col-md-2 resultsList')
+                        if price == 'ratePerMonth'
+                            p(style='margin-top:10px; font-weight:bold') $#{item.pricePerMonth}/month
+                            p #{item.buildingSize} SF Building
+                        else 
+                            p(style='margin-top:10px; font-weight:bold') $#{item.pricePerSF}/SF/month
+                            p #{item.buildingSize} SF Building
+                    div(class='mobileOnly')
+                        img(src='#{item.thumbnail}' class='mobilePhotos')
+                        div(class='mobileOnly' style='margin-left:4%')
+                            h4
+                                a(href='/location/#{item.address}') #{item.address}
+                            h6= item.city
                             p= item.footnote
-                        h4()
-                    div(class='mobileOnly' style='margin-left:4%')
-                        p $#{item.ratePerMonth}/month
+                        div(class='mobileOnly' style='margin-left:4%')
+                            if price === 'ratePerMonth'
+                                p $#{item.pricePerMonth}/month
+                            else
+                                p $#{item.pricePerSF}/SF/month
             div(class=(totalCount > 6 ? 'col-md-offset-4 text-center' : 'col-md-offset-7 hidePaginate')) 
                 ul(class='pagination')
                     li

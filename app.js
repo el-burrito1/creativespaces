@@ -9,20 +9,46 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
 var resultModel = require('./models/resultModel');
 var listingModel = require('./models/listingModel');
 var tenantModel = require('./models/tenantModel');
-var mongoose = require('mongoose');
+var userModel = require('./models/userModel')
 var sendgrid  = require('sendgrid')('spencer.spiegel','westmac');
 var email = sendgrid.Email();
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 if(global.process.env.MONGOLAB_URI){
   mongoose.connect(global.process.env.MONGOLAB_URI);
 }else{
   mongoose.connect('mongodb://localhost/creativespaces');
-  // mongoose.connect('mongodb://localhost/results')
-  // mongoose.connect('mongodb://localhost/tenants')
 }
+
+passport.use(new GoogleStrategy({
+    clientID: '776859070043-7kus72kc059lq7gcupi24hei172sph2f.apps.googleusercontent.com',
+    clientSecret: 'SNU0THTxOZeLQFcwQ3v9JohB',
+    callbackURL: "http://127.0.0.1:3000/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    process.nextTick(function () {
+    	var user = new userModel({
+    		googleId: profile.id
+    	})
+
+    	user.save();
+        return done(null, profile);
+    });
+  }
+));
 
 var app = express();
 app.use(h5bp({ root: __dirname + '/public' }));
@@ -30,6 +56,8 @@ app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
 
 // all environments
+app.use(passport.initialize());
+app.use(passport.session());
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -46,30 +74,31 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.get('/admin', ensureAuthenticated, function(req,res){
+	res.render('admin')
+})
+
+app.get('/login', function(req, res){
+  res.render('login');
+});
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile',
+                                            'https://www.googleapis.com/auth/userinfo.email'] }),
+  function(req, res){
+    // The request will be redirected to Google for authentication, so this
+    // function will not be called.
+  });
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.render('admin');
+  });
+
+
 app.get('/', function(req,res){
-
-	// var space = new buildingModel({
-		
-	// 	address          :   '5340 Alla Road',
-	// 	city             :   'Playa Vista',
-
-	// 	description      :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts. The Annex is for a culture. It's an ideal property for media, tech, production, product development or creative agencies. It is adjacent to heavies like Deutsch, Sony, Facebook, Belkin, Digital Domain, and Toms Shoes.",
-	// 	smallDescription :    "The Annex is more than just a property, it's a true campus for a preeminent brand that's more than the sum of its parts.",
-
-	// 	ratePerSF        :     2.95,
-	// 	ratePerMonth     :     26000,
-
-	// 	SFofSpaces       :    [8977 , 12407 , 9466 , 50000] ,
-	// 	availableSuites  :    ['Space 205 (8,977 SF)','Space 108 (12,407 SF)','Space 109 (9,466 SF)','Space 210 (50,000 SF)'],
-
-	// 	amenities        :    ['Reception' , 'Conference' , 'Kitchen'],
-	// 	imageSrc         :    ['annex/outside.jpg' , 'annex/table.jpg' , 'annex/inside.jpg' , 'annex/patio.jpg'],
-
-	// 	buildingSize     :    '80,850'
-	// })	
-
-	// space.save();
-	res.render('index')
+	res.render('index' , {title:'Discover Creative Office Space in Los Angeles' , meta:'Creative Office Spaces are work environments principled in design. Discover all available creative office space in Los Angeles with CreativeSpacesLA.'})
 });
 
 app.get('/results/:page' , function(req,res){
@@ -79,13 +108,15 @@ app.get('/results/:page' , function(req,res){
 	var maxPrice = req.query.maxPrice || 999999999;
 	var minSF = req.query.minSF || 0;
 	var maxSF = req.query.maxSF || 999999999;
+	console.log(req.query.price)
 
 	resultModel.find({
-		city          :  req.query.city,
-		ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
+		city          : req.query.city,
+		pricePerMonth  : {$gte : minPrice , $lte : maxPrice},
 		SFofSpaces    : {$gte : minSF    , $lte : maxSF}
 	})
 	.count(function(err,doc){
+		console.log(doc)
 		var paginate = Math.ceil(doc/6);
 		var pages = [];
 		for(var i = 1 ; i < paginate + 1; i++){
@@ -93,13 +124,14 @@ app.get('/results/:page' , function(req,res){
 		}
 		resultModel.find({
 			city          :  req.query.city,
-			ratePerMonth  : {$gte : minPrice , $lte : maxPrice},
+			pricePerMonth  : {$gte : minPrice , $lte : maxPrice},
 			SFofSpaces    : {$gte : minSF    , $lte : maxSF}
 		})
 		.skip(req.params.page * 6)
 		.limit(6)
 		.exec(function(err,docs){
 			console.log(docs)
+			console.log(req.query.price)
 			var previous = Math.max(0,req.params.page - 1);
 			var next = Math.min(pages.length-1,parseInt(req.params.page)+1);
 			var count = [];
@@ -107,14 +139,17 @@ app.get('/results/:page' , function(req,res){
 				count.push(i)
 			}
 			var currentPage = parseInt(req.params.page) + 1;
+
 			res.render('results' , {
+				meta: 'Creative Office Spaces are work environments principled in design. Discover all available creative office space in ' + req.query.city + ' with CreativeSpacesLA.',
+				title: 'Creative Office Space in ' + req.query.city,
 				totalCount:doc,
 				currentPage: currentPage,
 				previous: previous,
 				next: next,
 				results:docs, 
 				paginate:pages, 
-				price: req.body.price,
+				price:req.query.price || 'pricePerSF',
 				city:req.query.city,
 				minSF:req.query.minSF,
 				maxSF:req.query.maxSF,
@@ -129,17 +164,21 @@ app.get('/location/:id' , function(req,res){
 	console.log('id = ' + req.params.id)
 	listingModel.find({address: req.params.id}, function(err,docs){
 		console.log(docs)
-		res.render('spaceTemplate' , {listing : docs[0]})
+		res.render('listingTemplate' , {listing : docs[0] , title: 'Creative Office at ' + docs[0].address , meta: 'See details, view photos, and learn more about the creative office space at ' + docs[0].address})
 	})
 });
-
-app.get('/admin' , function(req,res){
-	res.render('admin')
-})
 
 app.post('/email' , function(req,res){
 	console.log(req.body)
 	res.send('success')
+
+	var tenant = new tenantModel({
+		email: req.body.email,
+		name: req.body.name,
+		address: req.body.address
+	})
+
+	tenant.save();
 
 	var html_body = '<p>Thank you for contacting us regarding ' + req.body.address + '. A representative will contact you shortly.<p> <br> <img src="https://s3-us-west-1.amazonaws.com/creativespacesla/public/images/emailLogo.png">'
 
@@ -191,7 +230,7 @@ app.post('/createlisting' , function(req,res){
 		address         : req.body.address,
 		city            : req.body.city,
 		description     : req.body.description,
-		availableSpaces : req.body.availableSpaces.split(','),
+		availableSpaces : req.body.availableSpaces.split('.'),
 		amenities       : req.body.amenities.split(','),
 		photos          : req.body.photos.split(','),
 		coordinates     : coordinates,
@@ -201,6 +240,17 @@ app.post('/createlisting' , function(req,res){
 	res.send('success')
 })
 
+app.get('/about' , function(req,res){
+	res.render('about' , {title: 'CreativeSpacesLA - We know every brick of Creative Office in Los Angeles' , meta:'Creative Office Spaces are work environments principled in design. Discover all available creative office space in Los Angeles with CreativeSpacesLA.'})
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+function ensureAuthenticated(req, res, next) {
+	console.log();
+  if (req.isAuthenticated()) { return next(); }
+  console.log(_passport)
+  res.redirect('/login');
+}
