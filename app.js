@@ -36,7 +36,7 @@ if(global.process.env.MONGOLAB_URI){
 passport.use(new GoogleStrategy({
     clientID: '776859070043-7kus72kc059lq7gcupi24hei172sph2f.apps.googleusercontent.com',
     clientSecret: 'SNU0THTxOZeLQFcwQ3v9JohB',
-    callbackURL: "http://creativespacesla/auth/google/callback"
+    callbackURL: "http://creativespacesla.com/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
