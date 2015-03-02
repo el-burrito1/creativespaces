@@ -93,13 +93,22 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
   	console.log(req.user.id)
-  	if(req.user.id == '114314334918398337595'){
-  		console.log('yo')
-  		res.render('admin')
-  	} else {
-  		console.log('no')
-  		res.redirect('login')
-  	}
+  	userModel.find({},function(err,docs){
+  		if(req.user.id == docs[0].googleId){
+  			res.render('admin')
+  		} else {
+  			res.redirect('login')
+  		}
+  	})
+
+  	// if(req.user.id == '114314334918398337595'){
+  	// 	console.log('yo')
+  	// 	res.render('admin')
+  	// } else {
+  	// 	console.log('no')
+  	// 	res.redirect('login')
+  	// }
+  	
   });
 
 
