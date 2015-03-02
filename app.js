@@ -40,11 +40,10 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
-    	var user = new userModel({
-    		googleId: profile.id
-    	})
-
-    	user.save();
+    	// var user = new userModel({
+    	// 	googleId: profile.id
+    	// })
+    	// user.save();
         return done(null, profile);
     });
   }
@@ -93,7 +92,14 @@ app.get('/auth/google',
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    res.render('admin');
+  	console.log(req.user.id)
+  	if(req.user.id == '114314334918398337595'){
+  		console.log('yo')
+  		res.render('admin')
+  	} else {
+  		console.log('no')
+  		res.redirect('login')
+  	}
   });
 
 
@@ -249,8 +255,6 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 function ensureAuthenticated(req, res, next) {
-	console.log();
   if (req.isAuthenticated()) { return next(); }
-  console.log(_passport)
   res.redirect('/login');
 }
