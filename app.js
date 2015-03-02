@@ -164,7 +164,7 @@ app.get('/location/:id' , function(req,res){
 	console.log('id = ' + req.params.id)
 	listingModel.find({address: req.params.id}, function(err,docs){
 		console.log(docs)
-		res.render('listingTemplate' , {listing : docs[0] , title: 'Creative Office at ' + docs[0].address , meta: 'See details, view photos, and learn more about the creative office space at ' + docs[0].address})
+		res.render('listingTemplate' , {listing : docs[0] , title: 'Creative Office at ' + docs[0].address , meta: 'See details, view photos, and learn more about the creative office space at ' + docs[0].address , photosLength : docs[0].photos.length})
 	})
 });
 

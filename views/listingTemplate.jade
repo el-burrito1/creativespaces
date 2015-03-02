@@ -32,7 +32,7 @@ block content
                         img(src='#{url}' data-carousel-number='#{i}' class='thumb mobileHide')
                     else
                         img(src='#{url}' data-carousel-number='#{i}' class='thumb thumbsRight mobileHide')
-            div(class='col-md-5 mobile-height-adjust' style='border-right:1px solid #E7E7E7;')
+            div(id='photo-container-height-adjust' class='col-md-5 mobile-height-adjust' style='border-right:1px solid #E7E7E7;')
                 h2= listing.address
                 h5 #{listing.city}, CA
                 p #{listing.description}
@@ -79,6 +79,7 @@ block content
                 i(class='fa fa-building-o' style='margin-right:10px;')
                 a(href='#{listing.buildingFlyer}' target='_blank') Download Building Flyer
                 h1(id='testcoordinates') #{listing.coordinates}
+                h1(id='photosLength') #{photosLength}
                    
     
 

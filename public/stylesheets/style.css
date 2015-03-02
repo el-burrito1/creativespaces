@@ -193,7 +193,7 @@ a {
 		margin-bottom:9%;
 	}
 
-	.border{
+	.borders{
 		border-top:1px solid #E7E7E7;
 		border-bottom:1px solid #E7E7E7;
 	}
@@ -229,6 +229,11 @@ a {
 
 	.mobile-height-adjust{
 		height: 431px;
+		/*padding-bottom: 29%; */
+	}
+
+	.mobile-height-adjust-row-2{
+		height:508px !important;
 	}
 
 	.space-contain-bottom{
