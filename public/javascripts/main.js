@@ -78,5 +78,7 @@ $(document).on('ready' , function(){
 	console.log($('#testcoordinates').text())
 	console.log($('#fuck-test-this').text())
 
+	
+
 
 })
