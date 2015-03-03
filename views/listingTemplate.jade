@@ -83,6 +83,8 @@ block content
                 p(id='longitude') #{listing.longitude}
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD90W6MypWGP6s4luD2kQHhZ9IFQrfr04g')
     script.
+        var latitude1 = #{listing.latitude}
+        console.log(latitude1)
         function initialize() {
           var mapOptions = {
             zoom: 17,
