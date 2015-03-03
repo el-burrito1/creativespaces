@@ -24,10 +24,6 @@ a {
 	}
 
 	.index-background{
-		background:url("./images/thumbnail.jpg"); 
-		background-size:100%; 
-		height: 0px; 
-		padding-top:23%;
 		margin-bottom: -8%;
 	}
 
@@ -189,12 +185,12 @@ a {
 
 @media screen and (min-width: 480px){ 
 
-	.index-background{
-		background:url("./images/thumbnail.jpg"); 
+/*	.index-background{
+		background:url("/public/images/thumbnail.jpg"); 
 		background-size:100%; 
 		height: 0px; 
 		padding-top:23%;
-	}
+	}*/
 
 	.logo{
 		width:364px;
