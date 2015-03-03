@@ -97,7 +97,7 @@ block content
           var marker = new google.maps.Marker({
               position: new google.maps.LatLng(#{listing.latitude}, #{listing.longitude}),
               map: map,
-              title: #{listing.address}
+              title: '#{listing.address}'
           });
 
         };
