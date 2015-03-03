@@ -62,10 +62,10 @@ block content
                             p #{item.buildingSize} SF Building
                     div(class='mobileOnly')
                         img(src='#{item.thumbnail}' class='mobilePhotos')
-                        div(class='mobileOnly' style='margin-left:4%;margin-top:8%')
+                        div(class='mobileOnly' style='margin-left:4%;margin-top:6%')
                             h4
                                 a(href='/location/#{item.address}') #{item.address}
-                            h6= item.city
+                            h6 #{item.city}, CA
                             p= item.footnote
                         div(class='mobileOnly' style='margin-left:4%')
                             if price === 'ratePerMonth'
