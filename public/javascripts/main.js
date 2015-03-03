@@ -1,20 +1,16 @@
 $(document).on('ready' , function(){
 
-	// $('.searchColumn').height(($('.resultsList').length)*55) 
-	// $('#mainContain').height(690 + (($('.resultAdd').length)*200))
-
-
 	function initialize() {
 	  var mapOptions = {
 	    zoom: 17,
-	    center: new google.maps.LatLng(33.977509, -118.425329)
+	    center: new google.maps.LatLng($('#latitude'), $('#longitude'))
 	  };
 
 	  var map = new google.maps.Map(document.getElementById('map-canvas'),
 	      mapOptions);
 
 	  var marker = new google.maps.Marker({
-	      position: new google.maps.LatLng(33.977509, -118.425329),
+	      position: new google.maps.LatLng($('#latitude'), $('#longitude')),
 	      map: map,
 	      title: '301 N. Canon'
 	  });
@@ -75,10 +71,14 @@ $(document).on('ready' , function(){
 		$(this)[0].reset()
 	})
 
-	console.log($('#testcoordinates').text())
-	console.log($('#fuck-test-this').text())
+	var photoLength = parseFloat($('#photosLength').text())
+	console.log(photoLength)
 
+	if($('#photosLength').text() > 4){
+		console.log('yew')
+		$('#photo-container-height-adjust').css('height' , '508px')
+	}
+
+	console.log($('#photosLength').text())
 	
-
-
 })

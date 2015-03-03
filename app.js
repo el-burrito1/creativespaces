@@ -240,6 +240,9 @@ app.post('/createlisting' , function(req,res){
 	for(var i = 0 ; i < StringofCoordinates.length ; i++){
 		coordinates.push(parseFloat(i))
 	}
+	var latitude = coordinates[0];
+	var longitude = coordinates[1];
+
 	var listing = new listingModel({
 		name            : req.body.name,
 		address         : req.body.address,
@@ -248,7 +251,8 @@ app.post('/createlisting' , function(req,res){
 		availableSpaces : req.body.availableSpaces.split('.'),
 		amenities       : req.body.amenities.split(','),
 		photos          : req.body.photos.split(','),
-		coordinates     : coordinates,
+		latitude        : latitude,
+		longitude       : longitude,
 		buildingFlyer   : req.body.buildingFlyer
 	})
 	listing.save()
