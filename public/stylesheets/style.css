@@ -135,9 +135,10 @@ a {
 	.locationList{
 		/*margin-top: 15%;*/
 		margin-bottom: 15%;
-		margin-left:-9%;
+		margin-left:-4%;
 		height:44px;
-		width:243px;
+		/*width:243px;*/
+		width: 100%;
 	}
 
 }
