@@ -78,13 +78,9 @@ block content
                 br
                 i(class='fa fa-building-o' style='margin-right:10px;')
                 a(href='#{listing.buildingFlyer}' target='_blank') Download Building Flyer
-                p(id='photosLength') #{photosLength}
-                p(id='latitude') #{listing.latitude}
-                p(id='longitude') #{listing.longitude}
+                p(id='photosLength' style='display:none;') #{photosLength}
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD90W6MypWGP6s4luD2kQHhZ9IFQrfr04g')
     script.
-        var latitude1 = #{listing.latitude}
-        console.log(latitude1)
         function initialize() {
           var mapOptions = {
             zoom: 17,
