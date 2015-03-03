@@ -81,11 +81,31 @@ block content
                 p(id='photosLength') #{photosLength}
                 p(id='latitude') #{listing.latitude}
                 p(id='longitude') #{listing.longitude}
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD90W6MypWGP6s4luD2kQHhZ9IFQrfr04g')
-    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-    //- script(async src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
-    script(src='/javascripts/main.js')
-    script(src='/javascripts/maps.js')
+    <script>
+
+        function initialize() {
+          var mapOptions = {
+            zoom: 17,
+            center: new google.maps.LatLng(34.0238497, -118.47588180000002 )
+          };
+
+          var map = new google.maps.Map(document.getElementById('map-canvas'),
+              mapOptions);
+
+          var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(34.0238497, -118.47588180000002),
+              map: map,
+              title: '301 N. Canon'
+          });
+
+        };
+
+
+        google.maps.event.addDomListener(window, 'load', initialize)
+
+
+
+    </script>
 
                    
     
