@@ -81,8 +81,7 @@ block content
                 p(id='photosLength') #{photosLength}
                 p(id='latitude') #{listing.latitude}
                 p(id='longitude') #{listing.longitude}
-    <script>
-
+    script.
         function initialize() {
           var mapOptions = {
             zoom: 17,
@@ -99,13 +98,9 @@ block content
           });
 
         };
-
-
         google.maps.event.addDomListener(window, 'load', initialize)
 
 
-
-    </script>
 
                    
     
