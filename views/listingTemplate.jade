@@ -88,16 +88,16 @@ block content
         function initialize() {
           var mapOptions = {
             zoom: 17,
-            center: new google.maps.LatLng(34.0238497, -118.47588180000002 )
+            center: new google.maps.LatLng(#{listing.latitude}, #{listing.longitude})
           };
 
           var map = new google.maps.Map(document.getElementById('map-canvas'),
               mapOptions);
 
           var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(34.0238497, -118.47588180000002),
+              position: new google.maps.LatLng(#{listing.latitude}, #{listing.longitude}),
               map: map,
-              title: '301 N. Canon'
+              title: #{listing.address}
           });
 
         };
