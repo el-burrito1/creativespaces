@@ -3,7 +3,7 @@ extends layout
 block content
     div(class='container')
         div(class='row' id='mainContain' style='margin-top:82px;')
-            form(class='mobileHide tabletHide' action='/results' method='get')
+            form(class='mobileHide tabletHide' action='/results/0' method='get')
                 div(class='col-md-3 searchColumn')
                     select(name='city' class='form-control' style='margin-bottom:20px;width:200px;')
                         option Location
@@ -42,7 +42,7 @@ block content
                     br
                     br
                     p If you send us an email we'll open up a personal search to find a location that fits your needs.
-                    a personal-support@creativespacesla.com
+                    a support@creativespacesla.com
             else
                 for item in results
                     div(class='mobileHide col-md-offset-1 col-md-2 resultsList resultAdd')
