@@ -12,10 +12,10 @@ html
     nav(class='navbar navbar-default navbar-fixed-top' style='height:82px;')
         a(href='/' class='navbar-brand')
             img(src='/images/creativehorizontal.png' class='logo logo-mobile')
-        form(class="navbar-form" role="form" id='subscribeForm' style='margin-top:2%;margin-right:15%;margin-left:60%')
-            div(class="form-group" style='margin-right:2%;')
-                input(type="text" class="form-control" placeholder="Email" id='email' name='email' required)
-            button(type="submit" id='subscribe-button' class="btn btn-default" style='color:white;background-color:#00B7FF') Join Email List!
+        //- form(role="form" id='subscribeForm' style='margin-top:2%;margin-right:15%;margin-left:60%')
+        //-     div(class="form-group" style='margin-right:2%;')
+        //-         input(type="text" class="form-control" placeholder="Email" id='email' name='email' style='width:55%;float:left;margin-right:2%;' required)
+        //-         button(type="submit" id='subscribe-button' class="btn btn-default" style='color:white;background-color:#00B7FF') Join Email List!
     block content
     nav(class='navbar navbar-default bottomNav mobile-bottom-nav')
         div(class='container')
@@ -52,6 +52,12 @@ html
                     a Google+
                     br
                     a Linkedin
+                div(class='col-md-5 col-md-offset-1 mobileHide' style='margin-top:2%;')
+                    form(role="form" id='subscribeForm' style='')
+                        div(class="form-group" style='margin-right:2%;')
+                            h4(style='color:#938A83;margin-bottom:3%') JOIN OUR EMAIL LIST!
+                            input(type="text" class="form-control" placeholder="Email" id='email' name='email' style='margin-bottom:3%' required)
+                            button(type="submit" id='subscribe-button' class="btn btn-default" style='color:white;background-color:#00B7FF') Join Email List!
         div(class='container socialIcons')
             div(class='row')
                 div(class='col-xs-offset-7 col-xs-1')
