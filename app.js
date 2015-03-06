@@ -259,6 +259,16 @@ app.post('/createlisting' , function(req,res){
 	res.send('success')
 })
 
+app.post('/subscribe' , function(req,res){
+	console.log(req.body)
+	var user = new userModel({
+		email : req.body.email
+	})
+
+	user.save();
+	res.send('success')
+})
+
 app.get('/about' , function(req,res){
 	res.render('about' , {title: 'CreativeSpacesLA - We know every brick of Creative Office in Los Angeles' , meta:'Creative Office Spaces are work environments principled in design. Discover all available creative office space in Los Angeles with CreativeSpacesLA.'})
 })

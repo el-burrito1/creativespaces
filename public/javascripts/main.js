@@ -71,6 +71,26 @@ $(document).on('ready' , function(){
 		$(this)[0].reset()
 	})
 
+	$('#subscribeForm').on('submit' , function(e){
+		e.preventDefault()
+		var contactInfo = $(this).serialize()
+		console.log(contactInfo)
+
+		var success = function(){
+				$('#subscribe-button').text('Thanks!')
+			}
+
+		$.ajax({
+			type: 'POST',
+			url : '/subscribe',
+			data: contactInfo,
+			success : success()
+		})
+
+		$(this)[0].reset()
+
+	})
+
 	var photoLength = parseFloat($('#photosLength').text())
 	console.log(photoLength)
 
