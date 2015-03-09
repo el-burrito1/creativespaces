@@ -23,6 +23,17 @@ a {
 		/*color: green;*/
 	}
 
+	.contact-class{
+		margin-top: 20%;
+		height: 50px;
+		margin-bottom: 105%;
+	}
+
+	.about-page{
+		height:250px;
+		margin-bottom: 80%;
+	}
+
 	.tabletOnly{
 		display:none;
 	}
@@ -189,6 +200,17 @@ a {
 		height: 0px; 
 		padding-top:23%;
 	}*/
+
+	.contact-class{
+		/*margin-top: 20%;*/
+		height: 200px;
+		margin-bottom: 35%;
+	}
+
+	.about-page{
+		height:250px;
+		margin-bottom: 20%;
+	}
 
 	.empty-results{
 		margin-top: 100px;
