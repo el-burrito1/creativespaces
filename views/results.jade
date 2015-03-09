@@ -42,22 +42,22 @@ block content
                     a support@creativespacesla.com
             else
                 for item in results
-                    div(class='mobileHide col-md-offset-1 col-md-2 resultsList resultAdd')
+                    div(class='mobileHide tabletHide col-md-offset-1 col-md-2 resultsList resultAdd')
                         img(src='#{item.thumbnail}' alt='Creative Office Space in #{item.city}' class='resultPhotos')
-                    div(class='mobileHide col-md-4 resultsList')
+                    div(class='mobileHide tabletHide col-md-4 resultsList')
                         h4 
                             a(href='/location/#{item.address}') #{item.address}
                         h6 #{item.city}, CA 
                         p= item.footnote
                         h4(style='margin-top:90px;')
-                    div(class='mobileHide col-md-2 resultsList')
+                    div(class='mobileHide tabletHide col-md-2 resultsList')
                         if price == 'ratePerMonth'
                             p(style='margin-top:10px; font-weight:bold') $#{item.pricePerMonth}/month
                             p #{item.buildingSize} SF Building
                         else 
                             p(style='margin-top:10px; font-weight:bold') $#{item.pricePerSF}/SF/month
                             p #{item.buildingSize} SF Building
-                    div(class='mobileOnly')
+                    div(class='mobileOnly tabletHide')
                         img(src='#{item.thumbnail}' class='mobilePhotos')
                         div(class='mobileOnly' style='margin-left:4%;margin-top:6%')
                             h4
