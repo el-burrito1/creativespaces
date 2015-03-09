@@ -273,6 +273,10 @@ app.get('/about' , function(req,res){
 	res.render('about' , {title: 'CreativeSpacesLA - We know every brick of Creative Office in Los Angeles' , meta:'Creative Office Spaces are work environments principled in design. Discover all available creative office space in Los Angeles with CreativeSpacesLA.'})
 })
 
+app.get('/contact' , function(req,res){
+	res.render('contact')
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
