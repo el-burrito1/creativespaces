@@ -525,6 +525,18 @@ a {
 		width: 100%;
 	}
 
+	.contact-class{
+		/*margin-top: 20%;*/
+		height: 600px;
+		margin-bottom: 29%;
+		margin-top: 10%;
+	}
+
+	.about-page{
+		height:600px;
+		margin-bottom: 28%;
+	}
+
 }
 
 
