@@ -99,6 +99,10 @@ $(document).on('ready' , function(){
 		$('#photo-container-height-adjust').css('height' , '508px')
 	}
 
+	if(screen.width <= 1024){
+		$('#photo-container-height-adjust').css('height' , 'auto')
+	}
+
 	console.log($('#photosLength').text())
 	
 })

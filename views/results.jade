@@ -2,7 +2,7 @@ extends layout
 
 block content
     div(class='container')
-        div(class='row' id='mainContain' style='margin-top:82px;')
+        div(class='row' id='mainContain' style='margin-top:82px;min-height:725px;')
             form(class='mobileHide tabletHide' action='/results/0' method='get')
                 div(class='col-md-3 searchColumn')
                     select(name='city' class='form-control' style='margin-bottom:20px;width:200px;')
@@ -34,7 +34,7 @@ block content
                             span $/sf/month
                     button(type='submit' class='btn result-search-button') search
             if totalCount == 0
-                div(style='margin-top: 100px; margin-left:28%') 
+                div(class='col-sm-offset-1 col-md-7 empty-results') 
                     h4 Sorry! We didn't find anything that matched your search.
                     br
                     br
@@ -42,15 +42,15 @@ block content
                     a support@creativespacesla.com
             else
                 for item in results
-                    div(class='mobileHide col-md-offset-1 col-md-2 resultsList resultAdd')
+                    div(class='mobileHide tabletHide col-md-offset-1 col-md-2 resultsList resultAdd')
                         img(src='#{item.thumbnail}' alt='Creative Office Space in #{item.city}' class='resultPhotos')
-                    div(class='mobileHide col-md-4 resultsList')
+                    div(class='mobileHide tabletHide col-md-4 resultsList')
                         h4 
                             a(href='/location/#{item.address}') #{item.address}
                         h6 #{item.city}, CA 
                         p= item.footnote
                         h4(style='margin-top:90px;')
-                    div(class='mobileHide col-md-2 resultsList')
+                    div(class='mobileHide tabletHide col-md-2 resultsList')
                         if price == 'ratePerMonth'
                             p(style='margin-top:10px; font-weight:bold') $#{item.pricePerMonth}/month
                             p #{item.buildingSize} SF Building
@@ -69,6 +69,15 @@ block content
                                 p $#{item.pricePerMonth}/month
                             else
                                 p $#{item.pricePerSF}/SF/month
+                    div(class='tabletOnly tablet-results')
+                        div(class='col-sm-2 col-md-offset-1')
+                            img(src='#{item.thumbnail}' alt='Creative Office Space in #{item.city}' class='resultPhotos')
+                        div(class='col-sm-8 tablet-left-adjust')
+                            h4 
+                                a(href='/location/#{item.address}') #{item.address}
+                            h6 #{item.city}, CA 
+                            p= item.footnote
+                            h4(style='margin-top:90px;')
             div(class=(totalCount > 6 ? 'col-md-offset-4 text-center' : 'col-md-offset-7 hidePaginate')) 
                 ul(class='pagination')
                     li
