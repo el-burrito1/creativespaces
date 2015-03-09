@@ -433,6 +433,10 @@ a {
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+	body{
+		width: 1024px;
+	}
+
 	.tabletHide{
 		display:none;
 	}
