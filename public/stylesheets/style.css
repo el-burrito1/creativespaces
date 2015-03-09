@@ -491,12 +491,13 @@ a {
 		margin-bottom: 60px;
 	}
 
-/*	.backgroundImage{
+	.backgroundImage{
 		background: url("/images/coverPhoto-compressor.jpg") 50% 0 no-repeat fixed;
 		background-size:100%;
 		height:385px;
-		padding-bottom:32%
-	}*/
+		padding-bottom:32%;
+		width: 100%;
+	}
 
 }
 
