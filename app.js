@@ -18,7 +18,6 @@ var sendgrid  = require('sendgrid')('spencer.spiegel','westmac');
 var email = sendgrid.Email();
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var favicon = require('serve-favicon');
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -61,8 +60,7 @@ app.use(passport.session());
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-// app.use(express.favicon());
-app.use(favicon(__dirname + '/public/images/creative6.png'));
+app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
